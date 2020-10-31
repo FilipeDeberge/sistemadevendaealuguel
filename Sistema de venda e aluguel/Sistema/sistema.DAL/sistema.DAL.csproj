@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E6617A57-7645-4FB1-9716-889E81CA6AEE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sistema.DAL</RootNamespace>
+    <AssemblyName>sistema.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataContextFactory.cs" />
+    <Compile Include="db_sistemaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_sistemaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="sistema.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sistema.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="db_sistemaDataSet.xsc">
+      <DependentUpon>db_sistemaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="db_sistemaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db_sistemaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db_sistemaDataSet.xss">
+      <DependentUpon>db_sistemaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\Alugar.datasource" />
+    <None Include="Properties\DataSources\Categoria.datasource" />
+    <None Include="Properties\DataSources\ContasReceber.datasource" />
+    <None Include="Properties\DataSources\DataClasses1DataContext.datasource" />
+    <None Include="Properties\DataSources\DataContextFactory.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_aluguelDataTable.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_aluguelRow.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_aluguelRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_aluguelRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_categoriaDataTable.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_categoriaRow.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_categoriaRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_categoriaRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_contas_receberDataTable.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_contas_receberRow.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_contas_receberRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_contas_receberRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_funcionariosDataTable.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_funcionariosRow.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_funcionariosRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_funcionariosRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_alugarDataTable.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_alugarRow.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_alugarRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_alugarRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_vendaDataTable.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_vendaRow.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_vendaRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_vendaRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_pessoaDataTable.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_pessoaRow.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_pessoaRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_pessoaRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_status_pagamentoDataTable.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_status_pagamentoRow.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_status_pagamentoRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_status_pagamentoRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_usuarioDataTable.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_usuarioRow.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_usuarioRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_usuarioRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vendaDataTable.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vendaRow.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vendaRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vendaRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vestuarioDataTable.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vestuarioRow.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vestuarioRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vestuarioRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\Funcionario.datasource" />
+    <None Include="Properties\DataSources\ItensAluguel.datasource" />
+    <None Include="Properties\DataSources\ItensVenda.datasource" />
+    <None Include="Properties\DataSources\Pessoas.datasource" />
+    <None Include="Properties\DataSources\StatusPagamento.datasource" />
+    <None Include="Properties\DataSources\Usuarios.datasource" />
+    <None Include="Properties\DataSources\Venda.datasource" />
+    <None Include="Properties\DataSources\Vestuario.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="sistema.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>sistema.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sistema.dbml.layout">
+      <DependentUpon>sistema.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
