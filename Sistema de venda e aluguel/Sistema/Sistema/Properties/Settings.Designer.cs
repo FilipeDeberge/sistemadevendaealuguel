@@ -27,7 +27,7 @@ namespace Sistema.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11;Data Source=FENIXX393\\SQLEXPRESS;Persist Security Info=True;Pa" +
-            "ssword=Mefazviver77;User ID=sa;Initial Catalog=db_sistema")]
+            "ssword=-;User ID=sa;Initial Catalog=db_sistema")]
         public string ConnectionString {
             get {
                 return ((string)(this["ConnectionString"]));
@@ -38,7 +38,7 @@ namespace Sistema.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Provider=SQLOLEDB;Data Source=fenixx393\\sqlexpress;Persist Security Info=True;Pas" +
-            "sword=Mefazviver77;User ID=sa;Initial Catalog=db_sistema")]
+            "sword=-;User ID=sa;Initial Catalog=db_sistema")]
         public string Relatorios {
             get {
                 return ((string)(this["Relatorios"]));
@@ -49,7 +49,7 @@ namespace Sistema.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Provider=SQLOLEDB;Data Source=DEBERGE\\SQLEXPRESS;Persist Security Info=True;Passw" +
-            "ord=Mefazviver77;User ID=sa;Initial Catalog=db_sistema")]
+            "ord=-;User ID=sa;Initial Catalog=db_sistema")]
         public string ConnectionString1 {
             get {
                 return ((string)(this["ConnectionString1"]));
@@ -60,7 +60,7 @@ namespace Sistema.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DEBERGE\\SQLEXPRESS;Initial Catalog=db_sistema;Persist Security Info=T" +
-            "rue;User ID=sa;Password=Mefazviver77")]
+            "rue;User ID=sa;-")]
         public string db_sistemaConnectionString {
             get {
                 return ((string)(this["db_sistemaConnectionString"]));

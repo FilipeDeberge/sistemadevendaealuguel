@@ -27,7 +27,7 @@ namespace sistema.DAL.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DEBERGE\\SQLEXPRESS;Initial Catalog=db_sistema;Persist Security Info=True;Us" +
-            "er ID=sa;Password=Mefazviver77")]
+            "er ID=sa;Password=-")]
         public string db_sistemaConnectionString {
             get {
                 return ((string)(this["db_sistemaConnectionString"]));
