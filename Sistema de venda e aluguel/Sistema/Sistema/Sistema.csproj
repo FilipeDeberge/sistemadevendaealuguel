@@ -69,16 +69,72 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conn.cs" />
+    <Compile Include="db_sistemaDataNovo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_sistemaDataNovo.xsd</DependentUpon>
+    </Compile>
     <Compile Include="db_sistemaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>db_sistemaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db_sistemaDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_sistemaDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db_sistemaDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_sistemaDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db_sistemaDataSetAtual.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_sistemaDataSetAtual.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="db_sistemaDefinitivo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_sistemaDefinitivo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ajustar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ajustar.Designer.cs">
+      <DependentUpon>frm_ajustar.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_aluguel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_aluguel.Designer.cs">
       <DependentUpon>frm_aluguel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_baixaaluguel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_baixaaluguel.Designer.cs">
+      <DependentUpon>frm_baixaaluguel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_caixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_caixa.Designer.cs">
+      <DependentUpon>frm_caixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_caixa_ajustar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_caixa_ajustar.Designer.cs">
+      <DependentUpon>frm_caixa_ajustar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_caixa_venda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_caixa_venda.Designer.cs">
+      <DependentUpon>frm_caixa_venda.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_categorias.cs">
       <SubType>Form</SubType>
@@ -92,17 +148,65 @@
     <Compile Include="frm_consultavestuario.Designer.cs">
       <DependentUpon>frm_consultavestuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_consulta_aluguel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_consulta_aluguel.Designer.cs">
+      <DependentUpon>frm_consulta_aluguel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_consulta_clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_consulta_clientes.Designer.cs">
+      <DependentUpon>frm_consulta_clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_consulta_venda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_consulta_venda.Designer.cs">
+      <DependentUpon>frm_consulta_venda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_dados_ajustes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_dados_ajustes.Designer.cs">
+      <DependentUpon>frm_dados_ajustes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_funcionario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_funcionario.Designer.cs">
       <DependentUpon>frm_funcionario.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_impressao_recibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_impressao_recibo.Designer.cs">
+      <DependentUpon>frm_impressao_recibo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_itens_alugados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_itens_alugados.Designer.cs">
+      <DependentUpon>frm_itens_alugados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_itens_vendidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_itens_vendidos.Designer.cs">
+      <DependentUpon>frm_itens_vendidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_menu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_menu.Designer.cs">
       <DependentUpon>frm_menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_retiradas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_retiradas.Designer.cs">
+      <DependentUpon>frm_retiradas.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_venda.cs">
       <SubType>Form</SubType>
@@ -125,8 +229,23 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="frm_ajustar.resx">
+      <DependentUpon>frm_ajustar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_aluguel.resx">
       <DependentUpon>frm_aluguel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_baixaaluguel.resx">
+      <DependentUpon>frm_baixaaluguel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_caixa.resx">
+      <DependentUpon>frm_caixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_caixa_ajustar.resx">
+      <DependentUpon>frm_caixa_ajustar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_caixa_venda.resx">
+      <DependentUpon>frm_caixa_venda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_categorias.resx">
       <DependentUpon>frm_categorias.cs</DependentUpon>
@@ -134,11 +253,35 @@
     <EmbeddedResource Include="frm_consultavestuario.resx">
       <DependentUpon>frm_consultavestuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_consulta_aluguel.resx">
+      <DependentUpon>frm_consulta_aluguel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_consulta_clientes.resx">
+      <DependentUpon>frm_consulta_clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_consulta_venda.resx">
+      <DependentUpon>frm_consulta_venda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_dados_ajustes.resx">
+      <DependentUpon>frm_dados_ajustes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_funcionario.resx">
       <DependentUpon>frm_funcionario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_impressao_recibo.resx">
+      <DependentUpon>frm_impressao_recibo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_itens_alugados.resx">
+      <DependentUpon>frm_itens_alugados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_itens_vendidos.resx">
+      <DependentUpon>frm_itens_vendidos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_menu.resx">
       <DependentUpon>frm_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_retiradas.resx">
+      <DependentUpon>frm_retiradas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_venda.resx">
       <DependentUpon>frm_venda.cs</DependentUpon>
@@ -156,6 +299,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Report1.rdlc" />
     <EmbeddedResource Include="Relatorios\Report2.rdlc" />
+    <None Include="db_sistemaDataNovo.xsc">
+      <DependentUpon>db_sistemaDataNovo.xsd</DependentUpon>
+    </None>
+    <None Include="db_sistemaDataNovo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db_sistemaDataNovo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db_sistemaDataNovo.xss">
+      <DependentUpon>db_sistemaDataNovo.xsd</DependentUpon>
+    </None>
     <None Include="db_sistemaDataSet.xsc">
       <DependentUpon>db_sistemaDataSet.xsd</DependentUpon>
     </None>
@@ -167,12 +321,102 @@
     <None Include="db_sistemaDataSet.xss">
       <DependentUpon>db_sistemaDataSet.xsd</DependentUpon>
     </None>
+    <None Include="db_sistemaDataSet1.xsc">
+      <DependentUpon>db_sistemaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="db_sistemaDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db_sistemaDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db_sistemaDataSet1.xss">
+      <DependentUpon>db_sistemaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="db_sistemaDataSet2.xsc">
+      <DependentUpon>db_sistemaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="db_sistemaDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db_sistemaDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db_sistemaDataSet2.xss">
+      <DependentUpon>db_sistemaDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="db_sistemaDataSetAtual.xsc">
+      <DependentUpon>db_sistemaDataSetAtual.xsd</DependentUpon>
+    </None>
+    <None Include="db_sistemaDataSetAtual.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db_sistemaDataSetAtual.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db_sistemaDataSetAtual.xss">
+      <DependentUpon>db_sistemaDataSetAtual.xsd</DependentUpon>
+    </None>
+    <None Include="db_sistemaDefinitivo.xsc">
+      <DependentUpon>db_sistemaDefinitivo.xsd</DependentUpon>
+    </None>
+    <None Include="db_sistemaDefinitivo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db_sistemaDefinitivo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db_sistemaDefinitivo.xss">
+      <DependentUpon>db_sistemaDefinitivo.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\sistema.DAL.Ajustar.datasource" />
     <None Include="Properties\DataSources\sistema.DAL.Alugar.datasource" />
     <None Include="Properties\DataSources\sistema.DAL.Categoria.datasource" />
     <None Include="Properties\DataSources\sistema.DAL.ContasReceber.datasource" />
     <None Include="Properties\DataSources\sistema.DAL.DataClasses1DataContext.datasource" />
     <None Include="Properties\DataSources\sistema.DAL.DataContextFactory.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_aluguelDataTable.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_aluguelRow.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_aluguelRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_aluguelRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_categoriaDataTable.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_categoriaRow.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_categoriaRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_categoriaRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_contas_receberDataTable.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_contas_receberRow.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_contas_receberRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_contas_receberRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_funcionariosDataTable.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_funcionariosRow.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_funcionariosRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_funcionariosRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_itens_alugarDataTable.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_itens_alugarRow.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_itens_alugarRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_itens_alugarRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_itens_vendaDataTable.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_itens_vendaRow.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_itens_vendaRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_itens_vendaRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_pessoaDataTable.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_pessoaRow.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_pessoaRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_pessoaRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_status_pagamentoDataTable.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_status_pagamentoRow.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_status_pagamentoRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_status_pagamentoRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_usuarioDataTable.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_usuarioRow.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_usuarioRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_usuarioRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_vendaDataTable.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_vendaRow.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_vendaRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_vendaRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_vestuarioDataTable.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_vestuarioRow.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_vestuarioRowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet+tb_vestuarioRowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\sistema.DAL.db_sistemaDataSet.datasource" />
     <None Include="Properties\DataSources\sistema.DAL.Funcionario.datasource" />
     <None Include="Properties\DataSources\sistema.DAL.ItensAluguel.datasource" />
     <None Include="Properties\DataSources\sistema.DAL.ItensVenda.datasource" />

@@ -79,3 +79,16 @@ C:\Sistema de venda e aluguel\Sistema\Sistema\bin\Debug\zh-CHT\Microsoft.ReportV
 C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_aluguel.resources
 C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_funcionario.resources
 C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.csproj.CoreCompileInputs.cache
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_baixaaluguel.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_itens_alugados.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_consulta_clientes.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_consulta_venda.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_itens_vendidos.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_consulta_aluguel.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_impressao_recibo.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_ajustar.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_dados_ajustes.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_retiradas.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_caixa.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_caixa_ajustar.resources
+C:\Sistema de venda e aluguel\Sistema\Sistema\obj\Debug\Sistema.frm_caixa_venda.resources

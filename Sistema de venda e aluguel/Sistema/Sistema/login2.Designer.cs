@@ -104,7 +104,7 @@
             this.btn_sair.Location = new System.Drawing.Point(211, 180);
             this.btn_sair.Name = "btn_sair";
             this.btn_sair.Size = new System.Drawing.Size(71, 23);
-            this.btn_sair.TabIndex = 11;
+            this.btn_sair.TabIndex = 12;
             this.btn_sair.Text = "SAIR";
             this.btn_sair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_sair.UseVisualStyleBackColor = false;
@@ -125,7 +125,7 @@
             this.btn_login.Location = new System.Drawing.Point(102, 180);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(72, 23);
-            this.btn_login.TabIndex = 7;
+            this.btn_login.TabIndex = 11;
             this.btn_login.Text = "LOGIN";
             this.btn_login.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_login.UseVisualStyleBackColor = false;
@@ -143,6 +143,7 @@
             this.Controls.Add(usuarioLabel);
             this.Controls.Add(this.txt_usuario);
             this.Controls.Add(this.btn_login);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frm_login2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

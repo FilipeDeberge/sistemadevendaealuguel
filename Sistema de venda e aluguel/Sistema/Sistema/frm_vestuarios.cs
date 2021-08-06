@@ -53,6 +53,14 @@ namespace Sistema
                 txt_descricao.Focus();
                 return false;
             }
+            
+            if (txt_codloja.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("O campo Código Loja é obrigatório!");
+                txt_codloja.Focus();
+                return false;
+            }
+
 
             return true;
         }
@@ -77,6 +85,8 @@ namespace Sistema
             if (e.Value != null && e.ColumnIndex == 3)
                 e.Value = ((Categoria)e.Value).Descricao;
         }
+
+       
     }
 }
 

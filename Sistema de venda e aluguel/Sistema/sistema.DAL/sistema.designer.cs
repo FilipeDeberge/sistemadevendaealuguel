@@ -36,9 +36,6 @@ namespace sistema.DAL
     partial void InsertPessoas(Pessoas instance);
     partial void UpdatePessoas(Pessoas instance);
     partial void DeletePessoas(Pessoas instance);
-    partial void InsertVenda(Venda instance);
-    partial void UpdateVenda(Venda instance);
-    partial void DeleteVenda(Venda instance);
     partial void InsertItensVenda(ItensVenda instance);
     partial void UpdateItensVenda(ItensVenda instance);
     partial void DeleteItensVenda(ItensVenda instance);
@@ -51,18 +48,24 @@ namespace sistema.DAL
     partial void InsertUsuarios(Usuarios instance);
     partial void UpdateUsuarios(Usuarios instance);
     partial void DeleteUsuarios(Usuarios instance);
-    partial void InsertItensAluguel(ItensAluguel instance);
-    partial void UpdateItensAluguel(ItensAluguel instance);
-    partial void DeleteItensAluguel(ItensAluguel instance);
     partial void InsertFuncionario(Funcionario instance);
     partial void UpdateFuncionario(Funcionario instance);
     partial void DeleteFuncionario(Funcionario instance);
-    partial void InsertAlugar(Alugar instance);
-    partial void UpdateAlugar(Alugar instance);
-    partial void DeleteAlugar(Alugar instance);
+    partial void InsertItensAluguel(ItensAluguel instance);
+    partial void UpdateItensAluguel(ItensAluguel instance);
+    partial void DeleteItensAluguel(ItensAluguel instance);
     partial void InsertVestuario(Vestuario instance);
     partial void UpdateVestuario(Vestuario instance);
     partial void DeleteVestuario(Vestuario instance);
+    partial void InsertAjustar(Ajustar instance);
+    partial void UpdateAjustar(Ajustar instance);
+    partial void DeleteAjustar(Ajustar instance);
+    partial void InsertAlugar(Alugar instance);
+    partial void UpdateAlugar(Alugar instance);
+    partial void DeleteAlugar(Alugar instance);
+    partial void InsertVenda(Venda instance);
+    partial void UpdateVenda(Venda instance);
+    partial void DeleteVenda(Venda instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -111,14 +114,6 @@ namespace sistema.DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<Venda> Venda
-		{
-			get
-			{
-				return this.GetTable<Venda>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ItensVenda> ItensVenda
 		{
 			get
@@ -151,6 +146,14 @@ namespace sistema.DAL
 			}
 		}
 		
+		public System.Data.Linq.Table<Funcionario> Funcionario
+		{
+			get
+			{
+				return this.GetTable<Funcionario>();
+			}
+		}
+		
 		public System.Data.Linq.Table<ItensAluguel> ItensAluguel
 		{
 			get
@@ -159,11 +162,19 @@ namespace sistema.DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<Funcionario> Funcionario
+		public System.Data.Linq.Table<Vestuario> Vestuario
 		{
 			get
 			{
-				return this.GetTable<Funcionario>();
+				return this.GetTable<Vestuario>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Ajustar> Ajustar
+		{
+			get
+			{
+				return this.GetTable<Ajustar>();
 			}
 		}
 		
@@ -175,11 +186,11 @@ namespace sistema.DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<Vestuario> Vestuario
+		public System.Data.Linq.Table<Venda> Venda
 		{
 			get
 			{
-				return this.GetTable<Vestuario>();
+				return this.GetTable<Venda>();
 			}
 		}
 	}
@@ -252,7 +263,7 @@ namespace sistema.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Categoria_tb_vestuario", Storage="_Vestuario", ThisKey="Codigo", OtherKey="CodigoCategoria")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Categoria_Vestuario", Storage="_Vestuario", ThisKey="Codigo", OtherKey="CodigoCategoria")]
 		public EntitySet<Vestuario> Vestuario
 		{
 			get
@@ -312,11 +323,7 @@ namespace sistema.DAL
 		
 		private string _Email;
 		
-		private EntitySet<Venda> _Venda;
-		
 		private EntityRef<Usuarios> _Usuarios;
-		
-		private EntitySet<Alugar> _Alugar;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -334,9 +341,7 @@ namespace sistema.DAL
 		
 		public Pessoas()
 		{
-			this._Venda = new EntitySet<Venda>(new Action<Venda>(this.attach_Venda), new Action<Venda>(this.detach_Venda));
 			this._Usuarios = default(EntityRef<Usuarios>);
-			this._Alugar = new EntitySet<Alugar>(new Action<Alugar>(this.attach_Alugar), new Action<Alugar>(this.detach_Alugar));
 			OnCreated();
 		}
 		
@@ -420,19 +425,6 @@ namespace sistema.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pessoas_Venda", Storage="_Venda", ThisKey="CodigoPessoa", OtherKey="CodigoPessoa")]
-		public EntitySet<Venda> Venda
-		{
-			get
-			{
-				return this._Venda;
-			}
-			set
-			{
-				this._Venda.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pessoas_Usuarios", Storage="_Usuarios", ThisKey="CodigoPessoa", OtherKey="CodigoPessoa", IsUnique=true, IsForeignKey=false)]
 		public Usuarios Usuarios
 		{
@@ -462,19 +454,6 @@ namespace sistema.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pessoas_Alugar", Storage="_Alugar", ThisKey="CodigoPessoa", OtherKey="CodigoPessoa")]
-		public EntitySet<Alugar> Alugar
-		{
-			get
-			{
-				return this._Alugar;
-			}
-			set
-			{
-				this._Alugar.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -493,281 +472,6 @@ namespace sistema.DAL
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Venda(Venda entity)
-		{
-			this.SendPropertyChanging();
-			entity.Pessoas = this;
-		}
-		
-		private void detach_Venda(Venda entity)
-		{
-			this.SendPropertyChanging();
-			entity.Pessoas = null;
-		}
-		
-		private void attach_Alugar(Alugar entity)
-		{
-			this.SendPropertyChanging();
-			entity.Pessoas = this;
-		}
-		
-		private void detach_Alugar(Alugar entity)
-		{
-			this.SendPropertyChanging();
-			entity.Pessoas = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_venda")]
-	public partial class Venda : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _CodigoVenda;
-		
-		private System.Nullable<decimal> _Valor;
-		
-		private System.Nullable<decimal> _Desconto;
-		
-		private System.Nullable<decimal> _ValorPago;
-		
-		private System.Nullable<int> _CodigoPessoa;
-		
-		private EntitySet<ItensVenda> _ItensVenda;
-		
-		private EntitySet<ContasReceber> _ContasReceber;
-		
-		private EntityRef<Pessoas> _Pessoas;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnCodigoVendaChanging(int value);
-    partial void OnCodigoVendaChanged();
-    partial void OnValorChanging(System.Nullable<decimal> value);
-    partial void OnValorChanged();
-    partial void OnDescontoChanging(System.Nullable<decimal> value);
-    partial void OnDescontoChanged();
-    partial void OnValorPagoChanging(System.Nullable<decimal> value);
-    partial void OnValorPagoChanged();
-    partial void OnCodigoPessoaChanging(System.Nullable<int> value);
-    partial void OnCodigoPessoaChanged();
-    #endregion
-		
-		public Venda()
-		{
-			this._ItensVenda = new EntitySet<ItensVenda>(new Action<ItensVenda>(this.attach_ItensVenda), new Action<ItensVenda>(this.detach_ItensVenda));
-			this._ContasReceber = new EntitySet<ContasReceber>(new Action<ContasReceber>(this.attach_ContasReceber), new Action<ContasReceber>(this.detach_ContasReceber));
-			this._Pessoas = default(EntityRef<Pessoas>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_venda", Storage="_CodigoVenda", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int CodigoVenda
-		{
-			get
-			{
-				return this._CodigoVenda;
-			}
-			set
-			{
-				if ((this._CodigoVenda != value))
-				{
-					this.OnCodigoVendaChanging(value);
-					this.SendPropertyChanging();
-					this._CodigoVenda = value;
-					this.SendPropertyChanged("CodigoVenda");
-					this.OnCodigoVendaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="valor", Storage="_Valor", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> Valor
-		{
-			get
-			{
-				return this._Valor;
-			}
-			set
-			{
-				if ((this._Valor != value))
-				{
-					this.OnValorChanging(value);
-					this.SendPropertyChanging();
-					this._Valor = value;
-					this.SendPropertyChanged("Valor");
-					this.OnValorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="desconto", Storage="_Desconto", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> Desconto
-		{
-			get
-			{
-				return this._Desconto;
-			}
-			set
-			{
-				if ((this._Desconto != value))
-				{
-					this.OnDescontoChanging(value);
-					this.SendPropertyChanging();
-					this._Desconto = value;
-					this.SendPropertyChanged("Desconto");
-					this.OnDescontoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="valor_pago", Storage="_ValorPago", DbType="Decimal(15,2)")]
-		public System.Nullable<decimal> ValorPago
-		{
-			get
-			{
-				return this._ValorPago;
-			}
-			set
-			{
-				if ((this._ValorPago != value))
-				{
-					this.OnValorPagoChanging(value);
-					this.SendPropertyChanging();
-					this._ValorPago = value;
-					this.SendPropertyChanged("ValorPago");
-					this.OnValorPagoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_pessoa", Storage="_CodigoPessoa", DbType="Int")]
-		public System.Nullable<int> CodigoPessoa
-		{
-			get
-			{
-				return this._CodigoPessoa;
-			}
-			set
-			{
-				if ((this._CodigoPessoa != value))
-				{
-					this.OnCodigoPessoaChanging(value);
-					this.SendPropertyChanging();
-					this._CodigoPessoa = value;
-					this.SendPropertyChanged("CodigoPessoa");
-					this.OnCodigoPessoaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Venda_ItensVenda", Storage="_ItensVenda", ThisKey="CodigoVenda", OtherKey="CodigoVenda")]
-		public EntitySet<ItensVenda> ItensVenda
-		{
-			get
-			{
-				return this._ItensVenda;
-			}
-			set
-			{
-				this._ItensVenda.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Venda_ContasReceber", Storage="_ContasReceber", ThisKey="CodigoVenda", OtherKey="CodigoVenda")]
-		public EntitySet<ContasReceber> ContasReceber
-		{
-			get
-			{
-				return this._ContasReceber;
-			}
-			set
-			{
-				this._ContasReceber.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pessoas_Venda", Storage="_Pessoas", ThisKey="CodigoPessoa", OtherKey="CodigoPessoa", IsForeignKey=true)]
-		public Pessoas Pessoas
-		{
-			get
-			{
-				return this._Pessoas.Entity;
-			}
-			set
-			{
-				Pessoas previousValue = this._Pessoas.Entity;
-				if (((previousValue != value) 
-							|| (this._Pessoas.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Pessoas.Entity = null;
-						previousValue.Venda.Remove(this);
-					}
-					this._Pessoas.Entity = value;
-					if ((value != null))
-					{
-						value.Venda.Add(this);
-						this._CodigoPessoa = value.CodigoPessoa;
-					}
-					else
-					{
-						this._CodigoPessoa = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Pessoas");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ItensVenda(ItensVenda entity)
-		{
-			this.SendPropertyChanging();
-			entity.Venda = this;
-		}
-		
-		private void detach_ItensVenda(ItensVenda entity)
-		{
-			this.SendPropertyChanging();
-			entity.Venda = null;
-		}
-		
-		private void attach_ContasReceber(ContasReceber entity)
-		{
-			this.SendPropertyChanging();
-			entity.Venda = this;
-		}
-		
-		private void detach_ContasReceber(ContasReceber entity)
-		{
-			this.SendPropertyChanging();
-			entity.Venda = null;
 		}
 	}
 	
@@ -789,8 +493,6 @@ namespace sistema.DAL
 		
 		private EntityRef<Venda> _Venda;
 		
-		private EntityRef<Vestuario> _Vestuario;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -810,7 +512,6 @@ namespace sistema.DAL
 		public ItensVenda()
 		{
 			this._Venda = default(EntityRef<Venda>);
-			this._Vestuario = default(EntityRef<Vestuario>);
 			OnCreated();
 		}
 		
@@ -914,7 +615,7 @@ namespace sistema.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Venda_ItensVenda", Storage="_Venda", ThisKey="CodigoVenda", OtherKey="CodigoVenda", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_venda_ItensVenda", Storage="_Venda", ThisKey="CodigoVenda", OtherKey="CodigoVenda", IsForeignKey=true)]
 		public Venda Venda
 		{
 			get
@@ -944,40 +645,6 @@ namespace sistema.DAL
 						this._CodigoVenda = default(int);
 					}
 					this.SendPropertyChanged("Venda");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_vestuario_ItensVenda", Storage="_Vestuario", ThisKey="CodigoVestuario", OtherKey="CodigoVestuario", IsForeignKey=true)]
-		public Vestuario Vestuario
-		{
-			get
-			{
-				return this._Vestuario.Entity;
-			}
-			set
-			{
-				Vestuario previousValue = this._Vestuario.Entity;
-				if (((previousValue != value) 
-							|| (this._Vestuario.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Vestuario.Entity = null;
-						previousValue.ItensVenda.Remove(this);
-					}
-					this._Vestuario.Entity = value;
-					if ((value != null))
-					{
-						value.ItensVenda.Add(this);
-						this._CodigoVestuario = value.CodigoVestuario;
-					}
-					else
-					{
-						this._CodigoVestuario = default(int);
-					}
-					this.SendPropertyChanged("Vestuario");
 				}
 			}
 		}
@@ -1318,7 +985,7 @@ namespace sistema.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Venda_ContasReceber", Storage="_Venda", ThisKey="CodigoVenda", OtherKey="CodigoVenda", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_venda_ContasReceber", Storage="_Venda", ThisKey="CodigoVenda", OtherKey="CodigoVenda", IsForeignKey=true)]
 		public Venda Venda
 		{
 			get
@@ -1520,238 +1187,6 @@ namespace sistema.DAL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_itens_alugar")]
-	public partial class ItensAluguel : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _CodigoItem;
-		
-		private System.Nullable<int> _Quantidade;
-		
-		private System.Nullable<int> _CodigoVestuario;
-		
-		private System.Nullable<int> _CodigoAluguel;
-		
-		private System.Nullable<decimal> _Valor;
-		
-		private EntityRef<Alugar> _Alugar;
-		
-		private EntityRef<Vestuario> _Vestuario;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnCodigoItemChanging(int value);
-    partial void OnCodigoItemChanged();
-    partial void OnQuantidadeChanging(System.Nullable<int> value);
-    partial void OnQuantidadeChanged();
-    partial void OnCodigoVestuarioChanging(System.Nullable<int> value);
-    partial void OnCodigoVestuarioChanged();
-    partial void OnCodigoAluguelChanging(System.Nullable<int> value);
-    partial void OnCodigoAluguelChanged();
-    partial void OnValorChanging(System.Nullable<decimal> value);
-    partial void OnValorChanged();
-    #endregion
-		
-		public ItensAluguel()
-		{
-			this._Alugar = default(EntityRef<Alugar>);
-			this._Vestuario = default(EntityRef<Vestuario>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_item", Storage="_CodigoItem", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int CodigoItem
-		{
-			get
-			{
-				return this._CodigoItem;
-			}
-			set
-			{
-				if ((this._CodigoItem != value))
-				{
-					this.OnCodigoItemChanging(value);
-					this.SendPropertyChanging();
-					this._CodigoItem = value;
-					this.SendPropertyChanged("CodigoItem");
-					this.OnCodigoItemChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="quantidade", Storage="_Quantidade", DbType="Int")]
-		public System.Nullable<int> Quantidade
-		{
-			get
-			{
-				return this._Quantidade;
-			}
-			set
-			{
-				if ((this._Quantidade != value))
-				{
-					this.OnQuantidadeChanging(value);
-					this.SendPropertyChanging();
-					this._Quantidade = value;
-					this.SendPropertyChanged("Quantidade");
-					this.OnQuantidadeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_vestuario", Storage="_CodigoVestuario", DbType="Int")]
-		public System.Nullable<int> CodigoVestuario
-		{
-			get
-			{
-				return this._CodigoVestuario;
-			}
-			set
-			{
-				if ((this._CodigoVestuario != value))
-				{
-					this.OnCodigoVestuarioChanging(value);
-					this.SendPropertyChanging();
-					this._CodigoVestuario = value;
-					this.SendPropertyChanged("CodigoVestuario");
-					this.OnCodigoVestuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_aluguel", Storage="_CodigoAluguel", DbType="Int")]
-		public System.Nullable<int> CodigoAluguel
-		{
-			get
-			{
-				return this._CodigoAluguel;
-			}
-			set
-			{
-				if ((this._CodigoAluguel != value))
-				{
-					this.OnCodigoAluguelChanging(value);
-					this.SendPropertyChanging();
-					this._CodigoAluguel = value;
-					this.SendPropertyChanged("CodigoAluguel");
-					this.OnCodigoAluguelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="valor", Storage="_Valor", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> Valor
-		{
-			get
-			{
-				return this._Valor;
-			}
-			set
-			{
-				if ((this._Valor != value))
-				{
-					this.OnValorChanging(value);
-					this.SendPropertyChanging();
-					this._Valor = value;
-					this.SendPropertyChanged("Valor");
-					this.OnValorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Alugar_ItensAluguel", Storage="_Alugar", ThisKey="CodigoAluguel", OtherKey="CodigoAlugar", IsForeignKey=true)]
-		public Alugar Alugar
-		{
-			get
-			{
-				return this._Alugar.Entity;
-			}
-			set
-			{
-				Alugar previousValue = this._Alugar.Entity;
-				if (((previousValue != value) 
-							|| (this._Alugar.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Alugar.Entity = null;
-						previousValue.ItensAluguel.Remove(this);
-					}
-					this._Alugar.Entity = value;
-					if ((value != null))
-					{
-						value.ItensAluguel.Add(this);
-						this._CodigoAluguel = value.CodigoAlugar;
-					}
-					else
-					{
-						this._CodigoAluguel = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Alugar");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_vestuario_ItensAluguel", Storage="_Vestuario", ThisKey="CodigoVestuario", OtherKey="CodigoVestuario", IsForeignKey=true)]
-		public Vestuario Vestuario
-		{
-			get
-			{
-				return this._Vestuario.Entity;
-			}
-			set
-			{
-				Vestuario previousValue = this._Vestuario.Entity;
-				if (((previousValue != value) 
-							|| (this._Vestuario.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Vestuario.Entity = null;
-						previousValue.ItensAluguel.Remove(this);
-					}
-					this._Vestuario.Entity = value;
-					if ((value != null))
-					{
-						value.ItensAluguel.Add(this);
-						this._CodigoVestuario = value.CodigoVestuario;
-					}
-					else
-					{
-						this._CodigoVestuario = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Vestuario");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_funcionarios")]
 	public partial class Funcionario : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1765,8 +1200,6 @@ namespace sistema.DAL
 		private string _Cargo;
 		
 		private string _Telefone;
-		
-		private EntitySet<Alugar> _Alugar;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1784,7 +1217,6 @@ namespace sistema.DAL
 		
 		public Funcionario()
 		{
-			this._Alugar = new EntitySet<Alugar>(new Action<Alugar>(this.attach_Alugar), new Action<Alugar>(this.detach_Alugar));
 			OnCreated();
 		}
 		
@@ -1868,19 +1300,6 @@ namespace sistema.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Funcionario_Alugar", Storage="_Alugar", ThisKey="CodigoFuncionario", OtherKey="CodigoFuncionario")]
-		public EntitySet<Alugar> Alugar
-		{
-			get
-			{
-				return this._Alugar;
-			}
-			set
-			{
-				this._Alugar.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1900,174 +1319,127 @@ namespace sistema.DAL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_Alugar(Alugar entity)
-		{
-			this.SendPropertyChanging();
-			entity.Funcionario = this;
-		}
-		
-		private void detach_Alugar(Alugar entity)
-		{
-			this.SendPropertyChanging();
-			entity.Funcionario = null;
-		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_aluguel")]
-	public partial class Alugar : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_itens_alugar")]
+	public partial class ItensAluguel : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _CodigoAlugar;
+		private int _CodigoItem;
 		
-		private string _Vestuario;
+		private System.Nullable<int> _Quantidade;
 		
-		private System.Nullable<System.DateTime> _Entrada;
+		private System.Nullable<int> _CodigoVestuario;
 		
-		private System.Nullable<System.DateTime> _Saida;
+		private int _CodigoAluguel;
 		
 		private System.Nullable<decimal> _Valor;
 		
-		private System.Nullable<int> _CodigoPessoa;
+		private EntityRef<Vestuario> _Vestuario;
 		
-		private System.Nullable<int> _CodigoFuncionario;
-		
-		private string _Status;
-		
-		private System.Nullable<decimal> _Desconto;
-		
-		private System.Nullable<decimal> _Sinal;
-		
-		private string _FormaDePagamento;
-		
-		private string _Cliente;
-		
-		private string _Telefone;
-		
-		private EntitySet<ItensAluguel> _ItensAluguel;
-		
-		private EntityRef<Pessoas> _Pessoas;
-		
-		private EntityRef<Funcionario> _Funcionario;
+		private EntityRef<Alugar> _Alugar;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnCodigoAlugarChanging(int value);
-    partial void OnCodigoAlugarChanged();
-    partial void OnVestuarioChanging(string value);
-    partial void OnVestuarioChanged();
-    partial void OnEntradaChanging(System.Nullable<System.DateTime> value);
-    partial void OnEntradaChanged();
-    partial void OnSaidaChanging(System.Nullable<System.DateTime> value);
-    partial void OnSaidaChanged();
+    partial void OnCodigoItemChanging(int value);
+    partial void OnCodigoItemChanged();
+    partial void OnQuantidadeChanging(System.Nullable<int> value);
+    partial void OnQuantidadeChanged();
+    partial void OnCodigoVestuarioChanging(System.Nullable<int> value);
+    partial void OnCodigoVestuarioChanged();
+    partial void OnCodigoAluguelChanging(int value);
+    partial void OnCodigoAluguelChanged();
     partial void OnValorChanging(System.Nullable<decimal> value);
     partial void OnValorChanged();
-    partial void OnCodigoPessoaChanging(System.Nullable<int> value);
-    partial void OnCodigoPessoaChanged();
-    partial void OnCodigoFuncionarioChanging(System.Nullable<int> value);
-    partial void OnCodigoFuncionarioChanged();
-    partial void OnStatusChanging(string value);
-    partial void OnStatusChanged();
-    partial void OnDescontoChanging(System.Nullable<decimal> value);
-    partial void OnDescontoChanged();
-    partial void OnSinalChanging(System.Nullable<decimal> value);
-    partial void OnSinalChanged();
-    partial void OnFormaDePagamentoChanging(string value);
-    partial void OnFormaDePagamentoChanged();
-    partial void OnClienteChanging(string value);
-    partial void OnClienteChanged();
-    partial void OnTelefoneChanging(string value);
-    partial void OnTelefoneChanged();
     #endregion
 		
-		public Alugar()
+		public ItensAluguel()
 		{
-			this._ItensAluguel = new EntitySet<ItensAluguel>(new Action<ItensAluguel>(this.attach_ItensAluguel), new Action<ItensAluguel>(this.detach_ItensAluguel));
-			this._Pessoas = default(EntityRef<Pessoas>);
-			this._Funcionario = default(EntityRef<Funcionario>);
+			this._Vestuario = default(EntityRef<Vestuario>);
+			this._Alugar = default(EntityRef<Alugar>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_aluguel", Storage="_CodigoAlugar", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int CodigoAlugar
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_item", Storage="_CodigoItem", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CodigoItem
 		{
 			get
 			{
-				return this._CodigoAlugar;
+				return this._CodigoItem;
 			}
 			set
 			{
-				if ((this._CodigoAlugar != value))
+				if ((this._CodigoItem != value))
 				{
-					this.OnCodigoAlugarChanging(value);
+					this.OnCodigoItemChanging(value);
 					this.SendPropertyChanging();
-					this._CodigoAlugar = value;
-					this.SendPropertyChanged("CodigoAlugar");
-					this.OnCodigoAlugarChanged();
+					this._CodigoItem = value;
+					this.SendPropertyChanged("CodigoItem");
+					this.OnCodigoItemChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="vestuario", Storage="_Vestuario", DbType="VarChar(50)")]
-		public string Vestuario
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="quantidade", Storage="_Quantidade", DbType="Int")]
+		public System.Nullable<int> Quantidade
 		{
 			get
 			{
-				return this._Vestuario;
+				return this._Quantidade;
 			}
 			set
 			{
-				if ((this._Vestuario != value))
+				if ((this._Quantidade != value))
 				{
-					this.OnVestuarioChanging(value);
+					this.OnQuantidadeChanging(value);
 					this.SendPropertyChanging();
-					this._Vestuario = value;
-					this.SendPropertyChanged("Vestuario");
-					this.OnVestuarioChanged();
+					this._Quantidade = value;
+					this.SendPropertyChanged("Quantidade");
+					this.OnQuantidadeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="entrada", Storage="_Entrada", DbType="Date")]
-		public System.Nullable<System.DateTime> Entrada
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_vestuario", Storage="_CodigoVestuario", DbType="Int")]
+		public System.Nullable<int> CodigoVestuario
 		{
 			get
 			{
-				return this._Entrada;
+				return this._CodigoVestuario;
 			}
 			set
 			{
-				if ((this._Entrada != value))
+				if ((this._CodigoVestuario != value))
 				{
-					this.OnEntradaChanging(value);
+					this.OnCodigoVestuarioChanging(value);
 					this.SendPropertyChanging();
-					this._Entrada = value;
-					this.SendPropertyChanged("Entrada");
-					this.OnEntradaChanged();
+					this._CodigoVestuario = value;
+					this.SendPropertyChanged("CodigoVestuario");
+					this.OnCodigoVestuarioChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="saida", Storage="_Saida", DbType="Date")]
-		public System.Nullable<System.DateTime> Saida
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_aluguel", Storage="_CodigoAluguel", DbType="Int NOT NULL")]
+		public int CodigoAluguel
 		{
 			get
 			{
-				return this._Saida;
+				return this._CodigoAluguel;
 			}
 			set
 			{
-				if ((this._Saida != value))
+				if ((this._CodigoAluguel != value))
 				{
-					this.OnSaidaChanging(value);
+					this.OnCodigoAluguelChanging(value);
 					this.SendPropertyChanging();
-					this._Saida = value;
-					this.SendPropertyChanged("Saida");
-					this.OnSaidaChanged();
+					this._CodigoAluguel = value;
+					this.SendPropertyChanged("CodigoAluguel");
+					this.OnCodigoAluguelChanged();
 				}
 			}
 		}
@@ -2092,243 +1464,70 @@ namespace sistema.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_pessoa", Storage="_CodigoPessoa", DbType="Int")]
-		public System.Nullable<int> CodigoPessoa
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Vestuario_ItensAluguel", Storage="_Vestuario", ThisKey="CodigoVestuario", OtherKey="CodigoVestuario", IsForeignKey=true)]
+		public Vestuario Vestuario
 		{
 			get
 			{
-				return this._CodigoPessoa;
+				return this._Vestuario.Entity;
 			}
 			set
 			{
-				if ((this._CodigoPessoa != value))
-				{
-					this.OnCodigoPessoaChanging(value);
-					this.SendPropertyChanging();
-					this._CodigoPessoa = value;
-					this.SendPropertyChanged("CodigoPessoa");
-					this.OnCodigoPessoaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_funcionario", Storage="_CodigoFuncionario", DbType="Int")]
-		public System.Nullable<int> CodigoFuncionario
-		{
-			get
-			{
-				return this._CodigoFuncionario;
-			}
-			set
-			{
-				if ((this._CodigoFuncionario != value))
-				{
-					this.OnCodigoFuncionarioChanging(value);
-					this.SendPropertyChanging();
-					this._CodigoFuncionario = value;
-					this.SendPropertyChanged("CodigoFuncionario");
-					this.OnCodigoFuncionarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="status", Storage="_Status", DbType="VarChar(50)")]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="desconto", Storage="_Desconto", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> Desconto
-		{
-			get
-			{
-				return this._Desconto;
-			}
-			set
-			{
-				if ((this._Desconto != value))
-				{
-					this.OnDescontoChanging(value);
-					this.SendPropertyChanging();
-					this._Desconto = value;
-					this.SendPropertyChanged("Desconto");
-					this.OnDescontoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="sinal", Storage="_Sinal", DbType="Decimal(10,2)")]
-		public System.Nullable<decimal> Sinal
-		{
-			get
-			{
-				return this._Sinal;
-			}
-			set
-			{
-				if ((this._Sinal != value))
-				{
-					this.OnSinalChanging(value);
-					this.SendPropertyChanging();
-					this._Sinal = value;
-					this.SendPropertyChanged("Sinal");
-					this.OnSinalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="forma_de_pagamento", Storage="_FormaDePagamento", DbType="VarChar(10)")]
-		public string FormaDePagamento
-		{
-			get
-			{
-				return this._FormaDePagamento;
-			}
-			set
-			{
-				if ((this._FormaDePagamento != value))
-				{
-					this.OnFormaDePagamentoChanging(value);
-					this.SendPropertyChanging();
-					this._FormaDePagamento = value;
-					this.SendPropertyChanged("FormaDePagamento");
-					this.OnFormaDePagamentoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="cliente", Storage="_Cliente", DbType="VarChar(50)")]
-		public string Cliente
-		{
-			get
-			{
-				return this._Cliente;
-			}
-			set
-			{
-				if ((this._Cliente != value))
-				{
-					this.OnClienteChanging(value);
-					this.SendPropertyChanging();
-					this._Cliente = value;
-					this.SendPropertyChanged("Cliente");
-					this.OnClienteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="telefone", Storage="_Telefone", DbType="VarChar(50)")]
-		public string Telefone
-		{
-			get
-			{
-				return this._Telefone;
-			}
-			set
-			{
-				if ((this._Telefone != value))
-				{
-					this.OnTelefoneChanging(value);
-					this.SendPropertyChanging();
-					this._Telefone = value;
-					this.SendPropertyChanged("Telefone");
-					this.OnTelefoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Alugar_ItensAluguel", Storage="_ItensAluguel", ThisKey="CodigoAlugar", OtherKey="CodigoAluguel")]
-		public EntitySet<ItensAluguel> ItensAluguel
-		{
-			get
-			{
-				return this._ItensAluguel;
-			}
-			set
-			{
-				this._ItensAluguel.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pessoas_Alugar", Storage="_Pessoas", ThisKey="CodigoPessoa", OtherKey="CodigoPessoa", IsForeignKey=true)]
-		public Pessoas Pessoas
-		{
-			get
-			{
-				return this._Pessoas.Entity;
-			}
-			set
-			{
-				Pessoas previousValue = this._Pessoas.Entity;
+				Vestuario previousValue = this._Vestuario.Entity;
 				if (((previousValue != value) 
-							|| (this._Pessoas.HasLoadedOrAssignedValue == false)))
+							|| (this._Vestuario.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Pessoas.Entity = null;
-						previousValue.Alugar.Remove(this);
+						this._Vestuario.Entity = null;
+						previousValue.ItensAluguel.Remove(this);
 					}
-					this._Pessoas.Entity = value;
+					this._Vestuario.Entity = value;
 					if ((value != null))
 					{
-						value.Alugar.Add(this);
-						this._CodigoPessoa = value.CodigoPessoa;
+						value.ItensAluguel.Add(this);
+						this._CodigoVestuario = value.CodigoVestuario;
 					}
 					else
 					{
-						this._CodigoPessoa = default(Nullable<int>);
+						this._CodigoVestuario = default(Nullable<int>);
 					}
-					this.SendPropertyChanged("Pessoas");
+					this.SendPropertyChanged("Vestuario");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Funcionario_Alugar", Storage="_Funcionario", ThisKey="CodigoFuncionario", OtherKey="CodigoFuncionario", IsForeignKey=true)]
-		public Funcionario Funcionario
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Alugar_ItensAluguel", Storage="_Alugar", ThisKey="CodigoAluguel", OtherKey="CodigoAlugar", IsForeignKey=true)]
+		public Alugar Alugar
 		{
 			get
 			{
-				return this._Funcionario.Entity;
+				return this._Alugar.Entity;
 			}
 			set
 			{
-				Funcionario previousValue = this._Funcionario.Entity;
+				Alugar previousValue = this._Alugar.Entity;
 				if (((previousValue != value) 
-							|| (this._Funcionario.HasLoadedOrAssignedValue == false)))
+							|| (this._Alugar.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Funcionario.Entity = null;
-						previousValue.Alugar.Remove(this);
+						this._Alugar.Entity = null;
+						previousValue.ItensAluguel.Remove(this);
 					}
-					this._Funcionario.Entity = value;
+					this._Alugar.Entity = value;
 					if ((value != null))
 					{
-						value.Alugar.Add(this);
-						this._CodigoFuncionario = value.CodigoFuncionario;
+						value.ItensAluguel.Add(this);
+						this._CodigoAluguel = value.CodigoAlugar;
 					}
 					else
 					{
-						this._CodigoFuncionario = default(Nullable<int>);
+						this._CodigoAluguel = default(int);
 					}
-					this.SendPropertyChanged("Funcionario");
+					this.SendPropertyChanged("Alugar");
 				}
 			}
 		}
@@ -2352,18 +1551,6 @@ namespace sistema.DAL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_ItensAluguel(ItensAluguel entity)
-		{
-			this.SendPropertyChanging();
-			entity.Alugar = this;
-		}
-		
-		private void detach_ItensAluguel(ItensAluguel entity)
-		{
-			this.SendPropertyChanging();
-			entity.Alugar = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_vestuario")]
@@ -2382,7 +1569,7 @@ namespace sistema.DAL
 		
 		private string _Disponibilidade;
 		
-		private EntitySet<ItensVenda> _ItensVenda;
+		private string _CodigoLoja;
 		
 		private EntitySet<ItensAluguel> _ItensAluguel;
 		
@@ -2402,11 +1589,12 @@ namespace sistema.DAL
     partial void OnCodigoCategoriaChanged();
     partial void OnDisponibilidadeChanging(string value);
     partial void OnDisponibilidadeChanged();
+    partial void OnCodigoLojaChanging(string value);
+    partial void OnCodigoLojaChanged();
     #endregion
 		
 		public Vestuario()
 		{
-			this._ItensVenda = new EntitySet<ItensVenda>(new Action<ItensVenda>(this.attach_ItensVenda), new Action<ItensVenda>(this.detach_ItensVenda));
 			this._ItensAluguel = new EntitySet<ItensAluguel>(new Action<ItensAluguel>(this.attach_ItensAluguel), new Action<ItensAluguel>(this.detach_ItensAluguel));
 			this._Categoria = default(EntityRef<Categoria>);
 			OnCreated();
@@ -2512,20 +1700,27 @@ namespace sistema.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_vestuario_ItensVenda", Storage="_ItensVenda", ThisKey="CodigoVestuario", OtherKey="CodigoVestuario")]
-		public EntitySet<ItensVenda> ItensVenda
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_loja", Storage="_CodigoLoja", DbType="VarChar(50)")]
+		public string CodigoLoja
 		{
 			get
 			{
-				return this._ItensVenda;
+				return this._CodigoLoja;
 			}
 			set
 			{
-				this._ItensVenda.Assign(value);
+				if ((this._CodigoLoja != value))
+				{
+					this.OnCodigoLojaChanging(value);
+					this.SendPropertyChanging();
+					this._CodigoLoja = value;
+					this.SendPropertyChanged("CodigoLoja");
+					this.OnCodigoLojaChanged();
+				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_vestuario_ItensAluguel", Storage="_ItensAluguel", ThisKey="CodigoVestuario", OtherKey="CodigoVestuario")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Vestuario_ItensAluguel", Storage="_ItensAluguel", ThisKey="CodigoVestuario", OtherKey="CodigoVestuario")]
 		public EntitySet<ItensAluguel> ItensAluguel
 		{
 			get
@@ -2538,7 +1733,7 @@ namespace sistema.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Categoria_tb_vestuario", Storage="_Categoria", ThisKey="CodigoCategoria", OtherKey="Codigo", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Categoria_Vestuario", Storage="_Categoria", ThisKey="CodigoCategoria", OtherKey="Codigo", IsForeignKey=true)]
 		public Categoria Categoria
 		{
 			get
@@ -2592,18 +1787,6 @@ namespace sistema.DAL
 			}
 		}
 		
-		private void attach_ItensVenda(ItensVenda entity)
-		{
-			this.SendPropertyChanging();
-			entity.Vestuario = this;
-		}
-		
-		private void detach_ItensVenda(ItensVenda entity)
-		{
-			this.SendPropertyChanging();
-			entity.Vestuario = null;
-		}
-		
 		private void attach_ItensAluguel(ItensAluguel entity)
 		{
 			this.SendPropertyChanging();
@@ -2614,6 +1797,1524 @@ namespace sistema.DAL
 		{
 			this.SendPropertyChanging();
 			entity.Vestuario = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_ajustar")]
+	public partial class Ajustar : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CodigoAjustar;
+		
+		private string _Vestuario;
+		
+		private System.Nullable<System.DateTime> _Retirada;
+		
+		private System.Nullable<decimal> _FaltaPagar;
+		
+		private string _Status;
+		
+		private System.Nullable<decimal> _Desconto;
+		
+		private System.Nullable<decimal> _Sinal;
+		
+		private string _FormaDePagamento;
+		
+		private string _Cliente;
+		
+		private string _Telefone;
+		
+		private string _Cpf;
+		
+		private System.Nullable<int> _Rg;
+		
+		private string _Endereco;
+		
+		private string _Email;
+		
+		private string _Funcionario;
+		
+		private System.Nullable<System.DateTime> _DataAjuste;
+		
+		private System.Nullable<decimal> _TotalGeral;
+		
+		private string _TamanhoPaleto;
+		
+		private string _TamanhoColete;
+		
+		private string _TamanhoCalca;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCodigoAjustarChanging(int value);
+    partial void OnCodigoAjustarChanged();
+    partial void OnVestuarioChanging(string value);
+    partial void OnVestuarioChanged();
+    partial void OnRetiradaChanging(System.Nullable<System.DateTime> value);
+    partial void OnRetiradaChanged();
+    partial void OnFaltaPagarChanging(System.Nullable<decimal> value);
+    partial void OnFaltaPagarChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
+    partial void OnDescontoChanging(System.Nullable<decimal> value);
+    partial void OnDescontoChanged();
+    partial void OnSinalChanging(System.Nullable<decimal> value);
+    partial void OnSinalChanged();
+    partial void OnFormaDePagamentoChanging(string value);
+    partial void OnFormaDePagamentoChanged();
+    partial void OnClienteChanging(string value);
+    partial void OnClienteChanged();
+    partial void OnTelefoneChanging(string value);
+    partial void OnTelefoneChanged();
+    partial void OnCpfChanging(string value);
+    partial void OnCpfChanged();
+    partial void OnRgChanging(System.Nullable<int> value);
+    partial void OnRgChanged();
+    partial void OnEnderecoChanging(string value);
+    partial void OnEnderecoChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnFuncionarioChanging(string value);
+    partial void OnFuncionarioChanged();
+    partial void OnDataAjusteChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataAjusteChanged();
+    partial void OnTotalGeralChanging(System.Nullable<decimal> value);
+    partial void OnTotalGeralChanged();
+    partial void OnTamanhoPaletoChanging(string value);
+    partial void OnTamanhoPaletoChanged();
+    partial void OnTamanhoColeteChanging(string value);
+    partial void OnTamanhoColeteChanged();
+    partial void OnTamanhoCalcaChanging(string value);
+    partial void OnTamanhoCalcaChanged();
+    #endregion
+		
+		public Ajustar()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_ajustar", Storage="_CodigoAjustar", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CodigoAjustar
+		{
+			get
+			{
+				return this._CodigoAjustar;
+			}
+			set
+			{
+				if ((this._CodigoAjustar != value))
+				{
+					this.OnCodigoAjustarChanging(value);
+					this.SendPropertyChanging();
+					this._CodigoAjustar = value;
+					this.SendPropertyChanged("CodigoAjustar");
+					this.OnCodigoAjustarChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="vestuario", Storage="_Vestuario", DbType="VarChar(1000)")]
+		public string Vestuario
+		{
+			get
+			{
+				return this._Vestuario;
+			}
+			set
+			{
+				if ((this._Vestuario != value))
+				{
+					this.OnVestuarioChanging(value);
+					this.SendPropertyChanging();
+					this._Vestuario = value;
+					this.SendPropertyChanged("Vestuario");
+					this.OnVestuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="retirada", Storage="_Retirada", DbType="Date")]
+		public System.Nullable<System.DateTime> Retirada
+		{
+			get
+			{
+				return this._Retirada;
+			}
+			set
+			{
+				if ((this._Retirada != value))
+				{
+					this.OnRetiradaChanging(value);
+					this.SendPropertyChanging();
+					this._Retirada = value;
+					this.SendPropertyChanged("Retirada");
+					this.OnRetiradaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="falta_pagar", Storage="_FaltaPagar", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> FaltaPagar
+		{
+			get
+			{
+				return this._FaltaPagar;
+			}
+			set
+			{
+				if ((this._FaltaPagar != value))
+				{
+					this.OnFaltaPagarChanging(value);
+					this.SendPropertyChanging();
+					this._FaltaPagar = value;
+					this.SendPropertyChanged("FaltaPagar");
+					this.OnFaltaPagarChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="status", Storage="_Status", DbType="VarChar(50)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="desconto", Storage="_Desconto", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> Desconto
+		{
+			get
+			{
+				return this._Desconto;
+			}
+			set
+			{
+				if ((this._Desconto != value))
+				{
+					this.OnDescontoChanging(value);
+					this.SendPropertyChanging();
+					this._Desconto = value;
+					this.SendPropertyChanged("Desconto");
+					this.OnDescontoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="sinal", Storage="_Sinal", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> Sinal
+		{
+			get
+			{
+				return this._Sinal;
+			}
+			set
+			{
+				if ((this._Sinal != value))
+				{
+					this.OnSinalChanging(value);
+					this.SendPropertyChanging();
+					this._Sinal = value;
+					this.SendPropertyChanged("Sinal");
+					this.OnSinalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="forma_de_pagamento", Storage="_FormaDePagamento", DbType="VarChar(50)")]
+		public string FormaDePagamento
+		{
+			get
+			{
+				return this._FormaDePagamento;
+			}
+			set
+			{
+				if ((this._FormaDePagamento != value))
+				{
+					this.OnFormaDePagamentoChanging(value);
+					this.SendPropertyChanging();
+					this._FormaDePagamento = value;
+					this.SendPropertyChanged("FormaDePagamento");
+					this.OnFormaDePagamentoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="cliente", Storage="_Cliente", DbType="VarChar(50)")]
+		public string Cliente
+		{
+			get
+			{
+				return this._Cliente;
+			}
+			set
+			{
+				if ((this._Cliente != value))
+				{
+					this.OnClienteChanging(value);
+					this.SendPropertyChanging();
+					this._Cliente = value;
+					this.SendPropertyChanged("Cliente");
+					this.OnClienteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="telefone", Storage="_Telefone", DbType="VarChar(50)")]
+		public string Telefone
+		{
+			get
+			{
+				return this._Telefone;
+			}
+			set
+			{
+				if ((this._Telefone != value))
+				{
+					this.OnTelefoneChanging(value);
+					this.SendPropertyChanging();
+					this._Telefone = value;
+					this.SendPropertyChanged("Telefone");
+					this.OnTelefoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="cpf", Storage="_Cpf", DbType="VarChar(11)")]
+		public string Cpf
+		{
+			get
+			{
+				return this._Cpf;
+			}
+			set
+			{
+				if ((this._Cpf != value))
+				{
+					this.OnCpfChanging(value);
+					this.SendPropertyChanging();
+					this._Cpf = value;
+					this.SendPropertyChanged("Cpf");
+					this.OnCpfChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="rg", Storage="_Rg", DbType="Int")]
+		public System.Nullable<int> Rg
+		{
+			get
+			{
+				return this._Rg;
+			}
+			set
+			{
+				if ((this._Rg != value))
+				{
+					this.OnRgChanging(value);
+					this.SendPropertyChanging();
+					this._Rg = value;
+					this.SendPropertyChanged("Rg");
+					this.OnRgChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="endereco", Storage="_Endereco", DbType="VarChar(100)")]
+		public string Endereco
+		{
+			get
+			{
+				return this._Endereco;
+			}
+			set
+			{
+				if ((this._Endereco != value))
+				{
+					this.OnEnderecoChanging(value);
+					this.SendPropertyChanging();
+					this._Endereco = value;
+					this.SendPropertyChanged("Endereco");
+					this.OnEnderecoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="email", Storage="_Email", DbType="VarChar(100)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="funcionario", Storage="_Funcionario", DbType="VarChar(50)")]
+		public string Funcionario
+		{
+			get
+			{
+				return this._Funcionario;
+			}
+			set
+			{
+				if ((this._Funcionario != value))
+				{
+					this.OnFuncionarioChanging(value);
+					this.SendPropertyChanging();
+					this._Funcionario = value;
+					this.SendPropertyChanged("Funcionario");
+					this.OnFuncionarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="data_ajuste", Storage="_DataAjuste", DbType="Date")]
+		public System.Nullable<System.DateTime> DataAjuste
+		{
+			get
+			{
+				return this._DataAjuste;
+			}
+			set
+			{
+				if ((this._DataAjuste != value))
+				{
+					this.OnDataAjusteChanging(value);
+					this.SendPropertyChanging();
+					this._DataAjuste = value;
+					this.SendPropertyChanged("DataAjuste");
+					this.OnDataAjusteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="total_geral", Storage="_TotalGeral", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> TotalGeral
+		{
+			get
+			{
+				return this._TotalGeral;
+			}
+			set
+			{
+				if ((this._TotalGeral != value))
+				{
+					this.OnTotalGeralChanging(value);
+					this.SendPropertyChanging();
+					this._TotalGeral = value;
+					this.SendPropertyChanged("TotalGeral");
+					this.OnTotalGeralChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="tamanho_paleto", Storage="_TamanhoPaleto", DbType="VarChar(30)")]
+		public string TamanhoPaleto
+		{
+			get
+			{
+				return this._TamanhoPaleto;
+			}
+			set
+			{
+				if ((this._TamanhoPaleto != value))
+				{
+					this.OnTamanhoPaletoChanging(value);
+					this.SendPropertyChanging();
+					this._TamanhoPaleto = value;
+					this.SendPropertyChanged("TamanhoPaleto");
+					this.OnTamanhoPaletoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="tamanho_colete", Storage="_TamanhoColete", DbType="VarChar(30)")]
+		public string TamanhoColete
+		{
+			get
+			{
+				return this._TamanhoColete;
+			}
+			set
+			{
+				if ((this._TamanhoColete != value))
+				{
+					this.OnTamanhoColeteChanging(value);
+					this.SendPropertyChanging();
+					this._TamanhoColete = value;
+					this.SendPropertyChanged("TamanhoColete");
+					this.OnTamanhoColeteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="tamanho_calca", Storage="_TamanhoCalca", DbType="VarChar(30)")]
+		public string TamanhoCalca
+		{
+			get
+			{
+				return this._TamanhoCalca;
+			}
+			set
+			{
+				if ((this._TamanhoCalca != value))
+				{
+					this.OnTamanhoCalcaChanging(value);
+					this.SendPropertyChanging();
+					this._TamanhoCalca = value;
+					this.SendPropertyChanged("TamanhoCalca");
+					this.OnTamanhoCalcaChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_aluguel")]
+	public partial class Alugar : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CodigoAlugar;
+		
+		private string _Vestuario;
+		
+		private System.Nullable<System.DateTime> _Entrada;
+		
+		private System.Nullable<System.DateTime> _Saida;
+		
+		private System.Nullable<decimal> _FaltaPagar;
+		
+		private System.Nullable<int> _CodigoPessoa;
+		
+		private System.Nullable<int> _CodigoFuncionario;
+		
+		private string _Status;
+		
+		private System.Nullable<decimal> _Desconto;
+		
+		private System.Nullable<decimal> _Sinal;
+		
+		private string _FormaDePagamento;
+		
+		private string _Cliente;
+		
+		private string _Telefone;
+		
+		private System.Nullable<System.DateTime> _Data;
+		
+		private System.Nullable<int> _Dias;
+		
+		private string _Cpf;
+		
+		private System.Nullable<int> _Rg;
+		
+		private string _Endereco;
+		
+		private string _Email;
+		
+		private string _Funcionario;
+		
+		private System.Nullable<System.DateTime> _DataAluguel;
+		
+		private System.Nullable<decimal> _TotalGeral;
+		
+		private string _Conheceu;
+		
+		private string _Observacao;
+		
+		private EntitySet<ItensAluguel> _ItensAluguel;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCodigoAlugarChanging(int value);
+    partial void OnCodigoAlugarChanged();
+    partial void OnVestuarioChanging(string value);
+    partial void OnVestuarioChanged();
+    partial void OnEntradaChanging(System.Nullable<System.DateTime> value);
+    partial void OnEntradaChanged();
+    partial void OnSaidaChanging(System.Nullable<System.DateTime> value);
+    partial void OnSaidaChanged();
+    partial void OnFaltaPagarChanging(System.Nullable<decimal> value);
+    partial void OnFaltaPagarChanged();
+    partial void OnCodigoPessoaChanging(System.Nullable<int> value);
+    partial void OnCodigoPessoaChanged();
+    partial void OnCodigoFuncionarioChanging(System.Nullable<int> value);
+    partial void OnCodigoFuncionarioChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
+    partial void OnDescontoChanging(System.Nullable<decimal> value);
+    partial void OnDescontoChanged();
+    partial void OnSinalChanging(System.Nullable<decimal> value);
+    partial void OnSinalChanged();
+    partial void OnFormaDePagamentoChanging(string value);
+    partial void OnFormaDePagamentoChanged();
+    partial void OnClienteChanging(string value);
+    partial void OnClienteChanged();
+    partial void OnTelefoneChanging(string value);
+    partial void OnTelefoneChanged();
+    partial void OnDataChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataChanged();
+    partial void OnDiasChanging(System.Nullable<int> value);
+    partial void OnDiasChanged();
+    partial void OnCpfChanging(string value);
+    partial void OnCpfChanged();
+    partial void OnRgChanging(System.Nullable<int> value);
+    partial void OnRgChanged();
+    partial void OnEnderecoChanging(string value);
+    partial void OnEnderecoChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnFuncionarioChanging(string value);
+    partial void OnFuncionarioChanged();
+    partial void OnDataAluguelChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataAluguelChanged();
+    partial void OnTotalGeralChanging(System.Nullable<decimal> value);
+    partial void OnTotalGeralChanged();
+    partial void OnConheceuChanging(string value);
+    partial void OnConheceuChanged();
+    partial void OnObservacaoChanging(string value);
+    partial void OnObservacaoChanged();
+    #endregion
+		
+		public Alugar()
+		{
+			this._ItensAluguel = new EntitySet<ItensAluguel>(new Action<ItensAluguel>(this.attach_ItensAluguel), new Action<ItensAluguel>(this.detach_ItensAluguel));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_aluguel", Storage="_CodigoAlugar", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CodigoAlugar
+		{
+			get
+			{
+				return this._CodigoAlugar;
+			}
+			set
+			{
+				if ((this._CodigoAlugar != value))
+				{
+					this.OnCodigoAlugarChanging(value);
+					this.SendPropertyChanging();
+					this._CodigoAlugar = value;
+					this.SendPropertyChanged("CodigoAlugar");
+					this.OnCodigoAlugarChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="vestuario", Storage="_Vestuario", DbType="VarChar(1000)")]
+		public string Vestuario
+		{
+			get
+			{
+				return this._Vestuario;
+			}
+			set
+			{
+				if ((this._Vestuario != value))
+				{
+					this.OnVestuarioChanging(value);
+					this.SendPropertyChanging();
+					this._Vestuario = value;
+					this.SendPropertyChanged("Vestuario");
+					this.OnVestuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="entrada", Storage="_Entrada", DbType="Date")]
+		public System.Nullable<System.DateTime> Entrada
+		{
+			get
+			{
+				return this._Entrada;
+			}
+			set
+			{
+				if ((this._Entrada != value))
+				{
+					this.OnEntradaChanging(value);
+					this.SendPropertyChanging();
+					this._Entrada = value;
+					this.SendPropertyChanged("Entrada");
+					this.OnEntradaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="saida", Storage="_Saida", DbType="Date")]
+		public System.Nullable<System.DateTime> Saida
+		{
+			get
+			{
+				return this._Saida;
+			}
+			set
+			{
+				if ((this._Saida != value))
+				{
+					this.OnSaidaChanging(value);
+					this.SendPropertyChanging();
+					this._Saida = value;
+					this.SendPropertyChanged("Saida");
+					this.OnSaidaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="falta_pagar", Storage="_FaltaPagar", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> FaltaPagar
+		{
+			get
+			{
+				return this._FaltaPagar;
+			}
+			set
+			{
+				if ((this._FaltaPagar != value))
+				{
+					this.OnFaltaPagarChanging(value);
+					this.SendPropertyChanging();
+					this._FaltaPagar = value;
+					this.SendPropertyChanged("FaltaPagar");
+					this.OnFaltaPagarChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_pessoa", Storage="_CodigoPessoa", DbType="Int")]
+		public System.Nullable<int> CodigoPessoa
+		{
+			get
+			{
+				return this._CodigoPessoa;
+			}
+			set
+			{
+				if ((this._CodigoPessoa != value))
+				{
+					this.OnCodigoPessoaChanging(value);
+					this.SendPropertyChanging();
+					this._CodigoPessoa = value;
+					this.SendPropertyChanged("CodigoPessoa");
+					this.OnCodigoPessoaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_funcionario", Storage="_CodigoFuncionario", DbType="Int")]
+		public System.Nullable<int> CodigoFuncionario
+		{
+			get
+			{
+				return this._CodigoFuncionario;
+			}
+			set
+			{
+				if ((this._CodigoFuncionario != value))
+				{
+					this.OnCodigoFuncionarioChanging(value);
+					this.SendPropertyChanging();
+					this._CodigoFuncionario = value;
+					this.SendPropertyChanged("CodigoFuncionario");
+					this.OnCodigoFuncionarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="status", Storage="_Status", DbType="VarChar(50)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="desconto", Storage="_Desconto", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> Desconto
+		{
+			get
+			{
+				return this._Desconto;
+			}
+			set
+			{
+				if ((this._Desconto != value))
+				{
+					this.OnDescontoChanging(value);
+					this.SendPropertyChanging();
+					this._Desconto = value;
+					this.SendPropertyChanged("Desconto");
+					this.OnDescontoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="sinal", Storage="_Sinal", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> Sinal
+		{
+			get
+			{
+				return this._Sinal;
+			}
+			set
+			{
+				if ((this._Sinal != value))
+				{
+					this.OnSinalChanging(value);
+					this.SendPropertyChanging();
+					this._Sinal = value;
+					this.SendPropertyChanged("Sinal");
+					this.OnSinalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="forma_de_pagamento", Storage="_FormaDePagamento", DbType="VarChar(50)")]
+		public string FormaDePagamento
+		{
+			get
+			{
+				return this._FormaDePagamento;
+			}
+			set
+			{
+				if ((this._FormaDePagamento != value))
+				{
+					this.OnFormaDePagamentoChanging(value);
+					this.SendPropertyChanging();
+					this._FormaDePagamento = value;
+					this.SendPropertyChanged("FormaDePagamento");
+					this.OnFormaDePagamentoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="cliente", Storage="_Cliente", DbType="VarChar(50)")]
+		public string Cliente
+		{
+			get
+			{
+				return this._Cliente;
+			}
+			set
+			{
+				if ((this._Cliente != value))
+				{
+					this.OnClienteChanging(value);
+					this.SendPropertyChanging();
+					this._Cliente = value;
+					this.SendPropertyChanged("Cliente");
+					this.OnClienteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="telefone", Storage="_Telefone", DbType="VarChar(50)")]
+		public string Telefone
+		{
+			get
+			{
+				return this._Telefone;
+			}
+			set
+			{
+				if ((this._Telefone != value))
+				{
+					this.OnTelefoneChanging(value);
+					this.SendPropertyChanging();
+					this._Telefone = value;
+					this.SendPropertyChanged("Telefone");
+					this.OnTelefoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="data", Storage="_Data", DbType="Date")]
+		public System.Nullable<System.DateTime> Data
+		{
+			get
+			{
+				return this._Data;
+			}
+			set
+			{
+				if ((this._Data != value))
+				{
+					this.OnDataChanging(value);
+					this.SendPropertyChanging();
+					this._Data = value;
+					this.SendPropertyChanged("Data");
+					this.OnDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="dias", Storage="_Dias", DbType="Int")]
+		public System.Nullable<int> Dias
+		{
+			get
+			{
+				return this._Dias;
+			}
+			set
+			{
+				if ((this._Dias != value))
+				{
+					this.OnDiasChanging(value);
+					this.SendPropertyChanging();
+					this._Dias = value;
+					this.SendPropertyChanged("Dias");
+					this.OnDiasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="cpf", Storage="_Cpf", DbType="VarChar(11)")]
+		public string Cpf
+		{
+			get
+			{
+				return this._Cpf;
+			}
+			set
+			{
+				if ((this._Cpf != value))
+				{
+					this.OnCpfChanging(value);
+					this.SendPropertyChanging();
+					this._Cpf = value;
+					this.SendPropertyChanged("Cpf");
+					this.OnCpfChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="rg", Storage="_Rg", DbType="Int")]
+		public System.Nullable<int> Rg
+		{
+			get
+			{
+				return this._Rg;
+			}
+			set
+			{
+				if ((this._Rg != value))
+				{
+					this.OnRgChanging(value);
+					this.SendPropertyChanging();
+					this._Rg = value;
+					this.SendPropertyChanged("Rg");
+					this.OnRgChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="endereco", Storage="_Endereco", DbType="VarChar(100)")]
+		public string Endereco
+		{
+			get
+			{
+				return this._Endereco;
+			}
+			set
+			{
+				if ((this._Endereco != value))
+				{
+					this.OnEnderecoChanging(value);
+					this.SendPropertyChanging();
+					this._Endereco = value;
+					this.SendPropertyChanged("Endereco");
+					this.OnEnderecoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="email", Storage="_Email", DbType="VarChar(100)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="funcionario", Storage="_Funcionario", DbType="VarChar(50)")]
+		public string Funcionario
+		{
+			get
+			{
+				return this._Funcionario;
+			}
+			set
+			{
+				if ((this._Funcionario != value))
+				{
+					this.OnFuncionarioChanging(value);
+					this.SendPropertyChanging();
+					this._Funcionario = value;
+					this.SendPropertyChanged("Funcionario");
+					this.OnFuncionarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="data_aluguel", Storage="_DataAluguel", DbType="Date")]
+		public System.Nullable<System.DateTime> DataAluguel
+		{
+			get
+			{
+				return this._DataAluguel;
+			}
+			set
+			{
+				if ((this._DataAluguel != value))
+				{
+					this.OnDataAluguelChanging(value);
+					this.SendPropertyChanging();
+					this._DataAluguel = value;
+					this.SendPropertyChanged("DataAluguel");
+					this.OnDataAluguelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="total_geral", Storage="_TotalGeral", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> TotalGeral
+		{
+			get
+			{
+				return this._TotalGeral;
+			}
+			set
+			{
+				if ((this._TotalGeral != value))
+				{
+					this.OnTotalGeralChanging(value);
+					this.SendPropertyChanging();
+					this._TotalGeral = value;
+					this.SendPropertyChanged("TotalGeral");
+					this.OnTotalGeralChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="conheceu", Storage="_Conheceu", DbType="VarChar(50)")]
+		public string Conheceu
+		{
+			get
+			{
+				return this._Conheceu;
+			}
+			set
+			{
+				if ((this._Conheceu != value))
+				{
+					this.OnConheceuChanging(value);
+					this.SendPropertyChanging();
+					this._Conheceu = value;
+					this.SendPropertyChanged("Conheceu");
+					this.OnConheceuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="observacao", Storage="_Observacao", DbType="VarChar(200)")]
+		public string Observacao
+		{
+			get
+			{
+				return this._Observacao;
+			}
+			set
+			{
+				if ((this._Observacao != value))
+				{
+					this.OnObservacaoChanging(value);
+					this.SendPropertyChanging();
+					this._Observacao = value;
+					this.SendPropertyChanged("Observacao");
+					this.OnObservacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Alugar_ItensAluguel", Storage="_ItensAluguel", ThisKey="CodigoAlugar", OtherKey="CodigoAluguel")]
+		public EntitySet<ItensAluguel> ItensAluguel
+		{
+			get
+			{
+				return this._ItensAluguel;
+			}
+			set
+			{
+				this._ItensAluguel.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ItensAluguel(ItensAluguel entity)
+		{
+			this.SendPropertyChanging();
+			entity.Alugar = this;
+		}
+		
+		private void detach_ItensAluguel(ItensAluguel entity)
+		{
+			this.SendPropertyChanging();
+			entity.Alugar = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tb_venda")]
+	public partial class Venda : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CodigoVenda;
+		
+		private System.Nullable<decimal> _Valor;
+		
+		private System.Nullable<decimal> _Desconto;
+		
+		private System.Nullable<decimal> _ValorPago;
+		
+		private System.Nullable<int> _CodigoPessoa;
+		
+		private System.Nullable<int> _CodigoFuncionario;
+		
+		private string _Cliente;
+		
+		private System.Nullable<System.DateTime> _Data;
+		
+		private string _Funcionario;
+		
+		private string _Vestuario;
+		
+		private string _FormaDePagamento;
+		
+		private EntitySet<ItensVenda> _ItensVenda;
+		
+		private EntitySet<ContasReceber> _ContasReceber;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCodigoVendaChanging(int value);
+    partial void OnCodigoVendaChanged();
+    partial void OnValorChanging(System.Nullable<decimal> value);
+    partial void OnValorChanged();
+    partial void OnDescontoChanging(System.Nullable<decimal> value);
+    partial void OnDescontoChanged();
+    partial void OnValorPagoChanging(System.Nullable<decimal> value);
+    partial void OnValorPagoChanged();
+    partial void OnCodigoPessoaChanging(System.Nullable<int> value);
+    partial void OnCodigoPessoaChanged();
+    partial void OnCodigoFuncionarioChanging(System.Nullable<int> value);
+    partial void OnCodigoFuncionarioChanged();
+    partial void OnClienteChanging(string value);
+    partial void OnClienteChanged();
+    partial void OnDataChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataChanged();
+    partial void OnFuncionarioChanging(string value);
+    partial void OnFuncionarioChanged();
+    partial void OnVestuarioChanging(string value);
+    partial void OnVestuarioChanged();
+    partial void OnFormaDePagamentoChanging(string value);
+    partial void OnFormaDePagamentoChanged();
+    #endregion
+		
+		public Venda()
+		{
+			this._ItensVenda = new EntitySet<ItensVenda>(new Action<ItensVenda>(this.attach_ItensVenda), new Action<ItensVenda>(this.detach_ItensVenda));
+			this._ContasReceber = new EntitySet<ContasReceber>(new Action<ContasReceber>(this.attach_ContasReceber), new Action<ContasReceber>(this.detach_ContasReceber));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_venda", Storage="_CodigoVenda", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CodigoVenda
+		{
+			get
+			{
+				return this._CodigoVenda;
+			}
+			set
+			{
+				if ((this._CodigoVenda != value))
+				{
+					this.OnCodigoVendaChanging(value);
+					this.SendPropertyChanging();
+					this._CodigoVenda = value;
+					this.SendPropertyChanged("CodigoVenda");
+					this.OnCodigoVendaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="valor", Storage="_Valor", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> Valor
+		{
+			get
+			{
+				return this._Valor;
+			}
+			set
+			{
+				if ((this._Valor != value))
+				{
+					this.OnValorChanging(value);
+					this.SendPropertyChanging();
+					this._Valor = value;
+					this.SendPropertyChanged("Valor");
+					this.OnValorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="desconto", Storage="_Desconto", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> Desconto
+		{
+			get
+			{
+				return this._Desconto;
+			}
+			set
+			{
+				if ((this._Desconto != value))
+				{
+					this.OnDescontoChanging(value);
+					this.SendPropertyChanging();
+					this._Desconto = value;
+					this.SendPropertyChanged("Desconto");
+					this.OnDescontoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="valor_pago", Storage="_ValorPago", DbType="Decimal(15,2)")]
+		public System.Nullable<decimal> ValorPago
+		{
+			get
+			{
+				return this._ValorPago;
+			}
+			set
+			{
+				if ((this._ValorPago != value))
+				{
+					this.OnValorPagoChanging(value);
+					this.SendPropertyChanging();
+					this._ValorPago = value;
+					this.SendPropertyChanged("ValorPago");
+					this.OnValorPagoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_pessoa", Storage="_CodigoPessoa", DbType="Int")]
+		public System.Nullable<int> CodigoPessoa
+		{
+			get
+			{
+				return this._CodigoPessoa;
+			}
+			set
+			{
+				if ((this._CodigoPessoa != value))
+				{
+					this.OnCodigoPessoaChanging(value);
+					this.SendPropertyChanging();
+					this._CodigoPessoa = value;
+					this.SendPropertyChanged("CodigoPessoa");
+					this.OnCodigoPessoaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="id_funcionario", Storage="_CodigoFuncionario", DbType="Int")]
+		public System.Nullable<int> CodigoFuncionario
+		{
+			get
+			{
+				return this._CodigoFuncionario;
+			}
+			set
+			{
+				if ((this._CodigoFuncionario != value))
+				{
+					this.OnCodigoFuncionarioChanging(value);
+					this.SendPropertyChanging();
+					this._CodigoFuncionario = value;
+					this.SendPropertyChanged("CodigoFuncionario");
+					this.OnCodigoFuncionarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="cliente", Storage="_Cliente", DbType="VarChar(50)")]
+		public string Cliente
+		{
+			get
+			{
+				return this._Cliente;
+			}
+			set
+			{
+				if ((this._Cliente != value))
+				{
+					this.OnClienteChanging(value);
+					this.SendPropertyChanging();
+					this._Cliente = value;
+					this.SendPropertyChanged("Cliente");
+					this.OnClienteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="data", Storage="_Data", DbType="Date")]
+		public System.Nullable<System.DateTime> Data
+		{
+			get
+			{
+				return this._Data;
+			}
+			set
+			{
+				if ((this._Data != value))
+				{
+					this.OnDataChanging(value);
+					this.SendPropertyChanging();
+					this._Data = value;
+					this.SendPropertyChanged("Data");
+					this.OnDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="funcionario", Storage="_Funcionario", DbType="VarChar(50)")]
+		public string Funcionario
+		{
+			get
+			{
+				return this._Funcionario;
+			}
+			set
+			{
+				if ((this._Funcionario != value))
+				{
+					this.OnFuncionarioChanging(value);
+					this.SendPropertyChanging();
+					this._Funcionario = value;
+					this.SendPropertyChanged("Funcionario");
+					this.OnFuncionarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="vestuario", Storage="_Vestuario", DbType="VarChar(1000)")]
+		public string Vestuario
+		{
+			get
+			{
+				return this._Vestuario;
+			}
+			set
+			{
+				if ((this._Vestuario != value))
+				{
+					this.OnVestuarioChanging(value);
+					this.SendPropertyChanging();
+					this._Vestuario = value;
+					this.SendPropertyChanged("Vestuario");
+					this.OnVestuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="forma_de_pagamento", Storage="_FormaDePagamento", DbType="VarChar(50)")]
+		public string FormaDePagamento
+		{
+			get
+			{
+				return this._FormaDePagamento;
+			}
+			set
+			{
+				if ((this._FormaDePagamento != value))
+				{
+					this.OnFormaDePagamentoChanging(value);
+					this.SendPropertyChanging();
+					this._FormaDePagamento = value;
+					this.SendPropertyChanged("FormaDePagamento");
+					this.OnFormaDePagamentoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_venda_ItensVenda", Storage="_ItensVenda", ThisKey="CodigoVenda", OtherKey="CodigoVenda")]
+		public EntitySet<ItensVenda> ItensVenda
+		{
+			get
+			{
+				return this._ItensVenda;
+			}
+			set
+			{
+				this._ItensVenda.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tb_venda_ContasReceber", Storage="_ContasReceber", ThisKey="CodigoVenda", OtherKey="CodigoVenda")]
+		public EntitySet<ContasReceber> ContasReceber
+		{
+			get
+			{
+				return this._ContasReceber;
+			}
+			set
+			{
+				this._ContasReceber.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ItensVenda(ItensVenda entity)
+		{
+			this.SendPropertyChanging();
+			entity.Venda = this;
+		}
+		
+		private void detach_ItensVenda(ItensVenda entity)
+		{
+			this.SendPropertyChanging();
+			entity.Venda = null;
+		}
+		
+		private void attach_ContasReceber(ContasReceber entity)
+		{
+			this.SendPropertyChanging();
+			entity.Venda = this;
+		}
+		
+		private void detach_ContasReceber(ContasReceber entity)
+		{
+			this.SendPropertyChanging();
+			entity.Venda = null;
 		}
 	}
 }

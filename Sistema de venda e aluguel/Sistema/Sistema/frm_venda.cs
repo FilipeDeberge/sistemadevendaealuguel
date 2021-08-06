@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using sistema.DAL;
+using System.Drawing.Printing;
 
 namespace Sistema
 {
@@ -20,7 +21,11 @@ namespace Sistema
 
         private void frm_venda_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(640, 83);
+            // TODO: esta linha de código carrega dados na tabela 'db_sistemaDataSet.tb_funcionarios'. Você pode movê-la ou removê-la conforme necessário.
+            this.tb_funcionariosTableAdapter.Fill(this.db_sistemaDataSet.tb_funcionarios);
+            // TODO: esta linha de código carrega dados na tabela 'db_sistemaDataSet1.tb_venda'. Você pode movê-la ou removê-la conforme necessário.
+            this.tb_vendaTableAdapter.Fill(this.db_sistemaDataSet1.tb_venda);
+            this.Size = new Size(530, 100);
             this.pessoasBindingSource.DataSource = DataContextFactory.DataContext.Pessoas;
             this.vendaBindingSource.DataSource = DataContextFactory.DataContext.Venda;
             this.vestuarioBindingSource.DataSource = DataContextFactory.DataContext.Vestuario;
@@ -55,15 +60,16 @@ namespace Sistema
 
         private void btn_novavenda_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(640, 582);
+            this.Size = new Size(530, 684);
             this.vendaBindingSource.EndEdit();
             DataContextFactory.DataContext.SubmitChanges();
             groupBox1.Visible = true;
             btn_novavenda.Enabled = false;
+            CB_pgto.Visible = true;
 
             this.itensVendaBindingSource.DataSource = DataContextFactory.DataContext.ItensVenda.Where (x => x.CodigoVestuario == this.VendaCorrente.CodigoVenda);
-            NovoItem();
-            CB_cliente.Enabled = false;
+          
+            
         }
 
         private void NovoItem()
@@ -76,55 +82,19 @@ namespace Sistema
         private void btn_novoitem_Click(object sender, EventArgs e)
         {
             this.itensVendaBindingSource.EndEdit();
-            this.DG_vendas.Refresh();
             DataContextFactory.DataContext.SubmitChanges();
-            MostraSomaValores();
-            NovoItem();
+            
+           
         }
 
-        private void DG_vendas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.Value != null && e.ColumnIndex == 1)
-                e.Value = ((Vestuario) e.Value) .Descricao;
-        }
 
-        
-
-        private void CB_vestuario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CB_vestuario.SelectedItem != null)
-            {
-                var pro = (Vestuario)CB_vestuario.SelectedItem;
-                this.ItemCorrente.CodigoVestuario = (int)pro.CodigoVestuario;
-                this.ItemCorrente.Valor = (decimal)pro.Valor;
-            }
-        }
-
-        private void MostraSomaValores()
-        {
-            decimal  total = 0;
-            foreach (DataGridViewRow dg in DG_vendas.Rows)
-            {
-                decimal v1 = Convert.ToDecimal(dg.Cells[2].Value);
-                decimal v2 = Convert.ToDecimal(dg.Cells[3].Value);
-                decimal subtotal = v1 * v2;
-                dg.Cells[4].Value = subtotal;
-                total += subtotal;
-            }
-
-            this.VendaCorrente.Valor = total;
-        }
-
-        private void btn_finPedido_Click(object sender, EventArgs e)
+        private void btn_finPedido_Click_1(object sender, EventArgs e)
         {
             if (MessageBox.Show("Tem certeza que deseja finalizar o Pedido?", "Finalizar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.itensVendaBindingSource.CancelEdit();
                 DataContextFactory.DataContext.SubmitChanges();
                 this.VendaCorrente.Desconto = 0;
-                btn_novoitem.Enabled = false;
-                CB_vestuario.Enabled = false;
-                txt_quantidade.Enabled = false;
                 txt_desconto.ReadOnly = false;
                 txt_desconto.Focus();
                 btn_finPedido.Enabled = false;
@@ -133,7 +103,7 @@ namespace Sistema
             }
         }
 
-        private void btn_finVenda_Click(object sender, EventArgs e)
+        private void btn_finVenda_Click_1(object sender, EventArgs e)
         {
             this.VendaCorrente.Desconto = Convert.ToDecimal(txt_desconto.Text);
             this.VendaCorrente.ValorPago = (decimal)(this.VendaCorrente.Valor - this.VendaCorrente.Desconto);
@@ -147,52 +117,55 @@ namespace Sistema
             this.ContaCorrente.CodigoVenda = this.VendaCorrente.CodigoVenda;
             this.ContaCorrente.DataCompra = DateTime.Now;
             this.ContaCorrente.DataVencimento = DateTime.Now;
-
         }
 
-        private void CB_pgto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CB_pgto.SelectedItem != null)
-            {
-                var status = (StatusPagamento)CB_pgto.SelectedItem;
-                if(status.CodigoStatus == 1)
-                {
-                    this.ContaCorrente.CodigoStatus = (int)status.CodigoStatus;
-                    this.ContaCorrente.DataPagamento = DateTime.Now;
-                    btn_finalizar.Enabled = true;
-                    txt_data_venc.Enabled = false; 
-                }
-                else if (status.CodigoStatus == 2)
-                {
-                    this.ContaCorrente.CodigoStatus = (int)status.CodigoStatus;
-                    this.ContaCorrente.DataVencimento = DateTime.Now;
-                    txt_data_venc.Enabled = true;
-                    btn_finalizar.Enabled = true;
 
-                }
-            }
-        }
 
-        private void btn_finalizar_Click(object sender, EventArgs e)
+        private void btn_finalizar_Click_1(object sender, EventArgs e)
         {
             this.contasReceberBindingSource.EndEdit();
-            txt_data_venc.Enabled = false;
-            btn_finalizar.Enabled = false;
+            btn_finVenda.Enabled = false;
             CB_pgto.Enabled = false;
             btn_imprimir.Enabled = true;
             DataContextFactory.DataContext.SubmitChanges();
             MessageBox.Show("Venda finalizada com Sucesso!");
 
         }
-
         private void txt_codigo_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void DG_vendas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+        private void documento_PrintPage_1(object sender, PrintPageEventArgs e)
+        {
+            Font font = new Font("Arial", 7);
+            Font font2 = new Font("Arial", 9);
+            Font font3 = new Font("Arial", 10);
+            int ancho = 600;
+            int y = 20;
+
+
+            e.Graphics.DrawString("--- Comprovante de Venda Cris Martins ---", font3, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
+            e.Graphics.DrawString("Endereço: Rua Ceará Nº 99, Jardim da Viga, Nova Iguaçú - RJ " + txt_cliente.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 50));
+            e.Graphics.DrawString("--- Data e hora ---" + DateTime.Now, font2, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
+            e.Graphics.DrawString("CONTRATO: " + txt_codigo.Text, font2, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
+            e.Graphics.DrawString("Cliente: " + txt_cliente.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 50));
+            e.Graphics.DrawString("Funcionário: " + cb_funcionario.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
+            e.Graphics.DrawString("--- Vestuários ---", font, Brushes.Black, new RectangleF(0, y += 30, ancho, 20));
+            e.Graphics.DrawString(txt_itens.Text, font, Brushes.Black, new RectangleF(0, y += 30, ancho, 20));
+            e.Graphics.DrawString("--- Forma de Pagamento: " + CB_pgto.Text, font, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
+            e.Graphics.DrawString("--- Desconto: R$ " + txt_desconto.Text, font2, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
+            e.Graphics.DrawString("--- Total Geral: R$ " + txt_valorTotal.Text, font2, Brushes.Black, new RectangleF(0, y += 20, ancho, 20));
+        }
+
+        private void btn_imprimir_Click(object sender, EventArgs e)
+        {
+            documento = new PrintDocument();
+            PrinterSettings ps = new PrinterSettings();
+            documento.PrinterSettings = ps;
+            documento.PrintPage += documento_PrintPage_1;
+            documento.Print();
         }
     }
 }

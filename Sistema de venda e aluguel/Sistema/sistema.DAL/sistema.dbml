@@ -4,7 +4,7 @@
     <Type Name="Categoria">
       <Column Name="id_categoria" Member="Codigo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="desc_categoria" Member="Descricao" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Association Name="Categoria_tb_vestuario" Member="Vestuario" ThisKey="Codigo" OtherKey="CodigoCategoria" Type="Vestuario" />
+      <Association Name="Categoria_Vestuario" Member="Vestuario" ThisKey="Codigo" OtherKey="CodigoCategoria" Type="Vestuario" />
     </Type>
   </Table>
   <Table Name="dbo.tb_pessoa" Member="Pessoas">
@@ -13,21 +13,7 @@
       <Column Name="nome" Member="Nome" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
       <Column Name="telefone" Member="Telefone" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="email" Member="Email" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Association Name="Pessoas_Venda" Member="Venda" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="Venda" />
       <Association Name="Pessoas_Usuarios" Member="Usuarios" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="Usuarios" Cardinality="One" />
-      <Association Name="Pessoas_Alugar" Member="Alugar" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="Alugar" />
-    </Type>
-  </Table>
-  <Table Name="dbo.tb_venda" Member="Venda">
-    <Type Name="Venda">
-      <Column Name="id_venda" Member="CodigoVenda" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="valor" Member="Valor" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="desconto" Member="Desconto" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="valor_pago" Member="ValorPago" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
-      <Column Name="id_pessoa" Member="CodigoPessoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Venda_ItensVenda" Member="ItensVenda" ThisKey="CodigoVenda" OtherKey="CodigoVenda" Type="ItensVenda" />
-      <Association Name="Venda_ContasReceber" Member="ContasReceber" ThisKey="CodigoVenda" OtherKey="CodigoVenda" Type="ContasReceber" />
-      <Association Name="Pessoas_Venda" Member="Pessoas" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="Pessoas" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tb_itens_venda" Member="ItensVenda">
@@ -37,8 +23,7 @@
       <Column Name="id_venda" Member="CodigoVenda" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="valor" Member="Valor" Type="System.Decimal" DbType="Decimal(15,2) NOT NULL" CanBeNull="false" />
       <Column Name="id_item" Member="CodigoItem" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="Venda_ItensVenda" Member="Venda" ThisKey="CodigoVenda" OtherKey="CodigoVenda" Type="Venda" IsForeignKey="true" />
-      <Association Name="tb_vestuario_ItensVenda" Member="Vestuario" ThisKey="CodigoVestuario" OtherKey="CodigoVestuario" Type="Vestuario" IsForeignKey="true" />
+      <Association Name="tb_venda_ItensVenda" Member="Venda" ThisKey="CodigoVenda" OtherKey="CodigoVenda" Type="Venda" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tb_status_pagamento" Member="StatusPagamento">
@@ -57,7 +42,7 @@
       <Column Name="id_venda" Member="CodigoVenda" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="id_status" Member="CodigoStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="StatusPagamento_ContasReceber" Member="StatusPagamento" ThisKey="CodigoStatus" OtherKey="CodigoStatus" Type="StatusPagamento" IsForeignKey="true" />
-      <Association Name="Venda_ContasReceber" Member="Venda" ThisKey="CodigoVenda" OtherKey="CodigoVenda" Type="Venda" IsForeignKey="true" />
+      <Association Name="tb_venda_ContasReceber" Member="Venda" ThisKey="CodigoVenda" OtherKey="CodigoVenda" Type="Venda" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tb_usuario" Member="Usuarios">
@@ -68,44 +53,23 @@
       <Association Name="Pessoas_Usuarios" Member="Pessoas" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="Pessoas" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.tb_itens_alugar" Member="ItensAluguel">
-    <Type Name="ItensAluguel">
-      <Column Name="id_item" Member="CodigoItem" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="quantidade" Member="Quantidade" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_vestuario" Member="CodigoVestuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_aluguel" Member="CodigoAluguel" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="valor" Member="Valor" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Association Name="Alugar_ItensAluguel" Member="Alugar" ThisKey="CodigoAluguel" OtherKey="CodigoAlugar" Type="Alugar" IsForeignKey="true" />
-      <Association Name="tb_vestuario_ItensAluguel" Member="Vestuario" ThisKey="CodigoVestuario" OtherKey="CodigoVestuario" Type="Vestuario" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.tb_funcionarios" Member="Funcionario">
     <Type Name="Funcionario">
       <Column Name="id_funcionario" Member="CodigoFuncionario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nome" Member="Nome" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="cargo" Member="Cargo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="telefone" Member="Telefone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="Funcionario_Alugar" Member="Alugar" ThisKey="CodigoFuncionario" OtherKey="CodigoFuncionario" Type="Alugar" />
     </Type>
   </Table>
-  <Table Name="dbo.tb_aluguel" Member="Alugar">
-    <Type Name="Alugar">
-      <Column Name="id_aluguel" Member="CodigoAlugar" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="vestuario" Member="Vestuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="entrada" Member="Entrada" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="saida" Member="Saida" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+  <Table Name="dbo.tb_itens_alugar" Member="ItensAluguel">
+    <Type Name="ItensAluguel">
+      <Column Name="id_item" Member="CodigoItem" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="quantidade" Member="Quantidade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_vestuario" Member="CodigoVestuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_aluguel" Member="CodigoAluguel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="valor" Member="Valor" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="id_pessoa" Member="CodigoPessoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_funcionario" Member="CodigoFuncionario" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="status" Member="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="desconto" Member="Desconto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="sinal" Member="Sinal" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
-      <Column Name="forma_de_pagamento" Member="FormaDePagamento" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="cliente" Member="Cliente" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="telefone" Member="Telefone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="Alugar_ItensAluguel" Member="ItensAluguel" ThisKey="CodigoAlugar" OtherKey="CodigoAluguel" Type="ItensAluguel" />
-      <Association Name="Pessoas_Alugar" Member="Pessoas" ThisKey="CodigoPessoa" OtherKey="CodigoPessoa" Type="Pessoas" IsForeignKey="true" />
-      <Association Name="Funcionario_Alugar" Member="Funcionario" ThisKey="CodigoFuncionario" OtherKey="CodigoFuncionario" Type="Funcionario" IsForeignKey="true" />
+      <Association Name="Vestuario_ItensAluguel" Member="Vestuario" ThisKey="CodigoVestuario" OtherKey="CodigoVestuario" Type="Vestuario" IsForeignKey="true" />
+      <Association Name="Alugar_ItensAluguel" Member="Alugar" ThisKey="CodigoAluguel" OtherKey="CodigoAlugar" Type="Alugar" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tb_vestuario" Member="Vestuario">
@@ -115,9 +79,79 @@
       <Column Name="valor" Member="Valor" Type="System.Decimal" DbType="Decimal(20,2)" CanBeNull="true" />
       <Column Name="id_categoria" Member="CodigoCategoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="disponibilidade" Member="Disponibilidade" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="tb_vestuario_ItensVenda" Member="ItensVenda" ThisKey="CodigoVestuario" OtherKey="CodigoVestuario" Type="ItensVenda" />
-      <Association Name="tb_vestuario_ItensAluguel" Member="ItensAluguel" ThisKey="CodigoVestuario" OtherKey="CodigoVestuario" Type="ItensAluguel" />
-      <Association Name="Categoria_tb_vestuario" Member="Categoria" ThisKey="CodigoCategoria" OtherKey="Codigo" Type="Categoria" IsForeignKey="true" />
+      <Column Name="id_loja" Member="CodigoLoja" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Vestuario_ItensAluguel" Member="ItensAluguel" ThisKey="CodigoVestuario" OtherKey="CodigoVestuario" Type="ItensAluguel" />
+      <Association Name="Categoria_Vestuario" Member="Categoria" ThisKey="CodigoCategoria" OtherKey="Codigo" Type="Categoria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_ajustar" Member="Ajustar">
+    <Type Name="Ajustar">
+      <Column Name="id_ajustar" Member="CodigoAjustar" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="vestuario" Member="Vestuario" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="retirada" Member="Retirada" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="falta_pagar" Member="FaltaPagar" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="status" Member="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="desconto" Member="Desconto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="sinal" Member="Sinal" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="forma_de_pagamento" Member="FormaDePagamento" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="cliente" Member="Cliente" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="telefone" Member="Telefone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="cpf" Member="Cpf" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="rg" Member="Rg" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="endereco" Member="Endereco" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="email" Member="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="funcionario" Member="Funcionario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="data_ajuste" Member="DataAjuste" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="total_geral" Member="TotalGeral" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="tamanho_paleto" Member="TamanhoPaleto" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="tamanho_colete" Member="TamanhoColete" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="tamanho_calca" Member="TamanhoCalca" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_aluguel" Member="Alugar">
+    <Type Name="Alugar">
+      <Column Name="id_aluguel" Member="CodigoAlugar" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="vestuario" Member="Vestuario" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="entrada" Member="Entrada" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="saida" Member="Saida" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="falta_pagar" Member="FaltaPagar" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="id_pessoa" Member="CodigoPessoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_funcionario" Member="CodigoFuncionario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Member="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="desconto" Member="Desconto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="sinal" Member="Sinal" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="forma_de_pagamento" Member="FormaDePagamento" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="cliente" Member="Cliente" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="telefone" Member="Telefone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="data" Member="Data" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="dias" Member="Dias" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cpf" Member="Cpf" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="rg" Member="Rg" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="endereco" Member="Endereco" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="email" Member="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="funcionario" Member="Funcionario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="data_aluguel" Member="DataAluguel" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="total_geral" Member="TotalGeral" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="conheceu" Member="Conheceu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="observacao" Member="Observacao" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="Alugar_ItensAluguel" Member="ItensAluguel" ThisKey="CodigoAlugar" OtherKey="CodigoAluguel" Type="ItensAluguel" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tb_venda" Member="Venda">
+    <Type Name="Venda">
+      <Column Name="id_venda" Member="CodigoVenda" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="valor" Member="Valor" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="desconto" Member="Desconto" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="valor_pago" Member="ValorPago" Type="System.Decimal" DbType="Decimal(15,2)" CanBeNull="true" />
+      <Column Name="id_pessoa" Member="CodigoPessoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_funcionario" Member="CodigoFuncionario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cliente" Member="Cliente" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="data" Member="Data" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="funcionario" Member="Funcionario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="vestuario" Member="Vestuario" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="forma_de_pagamento" Member="FormaDePagamento" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="tb_venda_ItensVenda" Member="ItensVenda" ThisKey="CodigoVenda" OtherKey="CodigoVenda" Type="ItensVenda" />
+      <Association Name="tb_venda_ContasReceber" Member="ContasReceber" ThisKey="CodigoVenda" OtherKey="CodigoVenda" Type="ContasReceber" />
     </Type>
   </Table>
 </Database>

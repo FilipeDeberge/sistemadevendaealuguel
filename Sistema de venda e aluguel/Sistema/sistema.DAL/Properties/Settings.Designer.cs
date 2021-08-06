@@ -26,7 +26,7 @@ namespace sistema.DAL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=db_sistema;Persist Security Info=True;Us" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DEBERGE\\SQLEXPRESS;Initial Catalog=db_sistema;Persist Security Info=True;Us" +
             "er ID=sa;Password=Mefazviver77")]
         public string db_sistemaConnectionString {
             get {
@@ -37,7 +37,7 @@ namespace sistema.DAL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=db_sistema;Persist Security Info=True;Us" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DEBERGE\\SQLEXPRESS;Initial Catalog=db_sistema;Persist Security Info=True;Us" +
             "er ID=sa")]
         public string db_sistemaConnectionString1 {
             get {

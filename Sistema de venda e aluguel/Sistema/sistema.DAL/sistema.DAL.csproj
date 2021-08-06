@@ -53,6 +53,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="sistema.cs">
+      <DependentUpon>sistema.dbml</DependentUpon>
+    </Compile>
     <Compile Include="sistema.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,64 +76,6 @@
     <None Include="db_sistemaDataSet.xss">
       <DependentUpon>db_sistemaDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Properties\DataSources\Alugar.datasource" />
-    <None Include="Properties\DataSources\Categoria.datasource" />
-    <None Include="Properties\DataSources\ContasReceber.datasource" />
-    <None Include="Properties\DataSources\DataClasses1DataContext.datasource" />
-    <None Include="Properties\DataSources\DataContextFactory.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_aluguelDataTable.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_aluguelRow.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_aluguelRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_aluguelRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_categoriaDataTable.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_categoriaRow.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_categoriaRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_categoriaRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_contas_receberDataTable.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_contas_receberRow.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_contas_receberRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_contas_receberRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_funcionariosDataTable.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_funcionariosRow.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_funcionariosRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_funcionariosRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_alugarDataTable.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_alugarRow.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_alugarRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_alugarRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_vendaDataTable.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_vendaRow.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_vendaRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_itens_vendaRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_pessoaDataTable.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_pessoaRow.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_pessoaRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_pessoaRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_status_pagamentoDataTable.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_status_pagamentoRow.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_status_pagamentoRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_status_pagamentoRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_usuarioDataTable.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_usuarioRow.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_usuarioRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_usuarioRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vendaDataTable.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vendaRow.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vendaRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vendaRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vestuarioDataTable.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vestuarioRow.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vestuarioRowChangeEvent.datasource" />
-    <None Include="Properties\DataSources\db_sistemaDataSet.tb_vestuarioRowChangeEventHandler.datasource" />
-    <None Include="Properties\DataSources\Funcionario.datasource" />
-    <None Include="Properties\DataSources\ItensAluguel.datasource" />
-    <None Include="Properties\DataSources\ItensVenda.datasource" />
-    <None Include="Properties\DataSources\Pessoas.datasource" />
-    <None Include="Properties\DataSources\StatusPagamento.datasource" />
-    <None Include="Properties\DataSources\Usuarios.datasource" />
-    <None Include="Properties\DataSources\Venda.datasource" />
-    <None Include="Properties\DataSources\Vestuario.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
